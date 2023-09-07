@@ -1,5 +1,5 @@
 {
-    "title": "Storage ( 10% ) Section",
+    "title": "Storage ( 10% ) Sections",
     "description": "Storage Related Problems Practices",
     "details": {
       "intro": {
@@ -19,4 +19,4 @@
     "backend": {
       "imageid": "kubernetes-kubeadm-2nodes"
     }
-  }
+}
