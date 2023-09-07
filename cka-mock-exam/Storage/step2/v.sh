@@ -50,7 +50,7 @@ if kubectl get pvc "$pvc_name" &> /dev/null; then
   fi
 
   # Check storage request size (adjust the value as needed)
-  if echo "$pvc_info" | grep -q "Storage:.*100Mi"; then
+  if echo "$pvc_info" | grep -q "Storage:.*/100Mi"; then
     echo "PVC $pvc_name has the correct storage request size."
   else
     echo "Error: PVC $pvc_name does not have the correct storage request size."
