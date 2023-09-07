@@ -7,7 +7,7 @@ For this question, please set this context (In exam, diff cluster name)
 
 <br>
 
-A persistent volume named `red-pv-cka` is available. Your task is to create a PersistentVolumeClaim (PVC) named `red-pvc-cka` and request `30Mi` of storage from the red-pv-cka PersistentVolume (PV).
+A persistent volume named `red-pv-cka` is available. Your task is to create a PersistentVolumeClaim (PVC) named `red-pvc-cka` and request `30Mi` of storage from the `red-pv-cka` PersistentVolume (PV).
 
 Ensure the following criteria are met:
 
