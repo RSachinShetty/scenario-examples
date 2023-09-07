@@ -1,6 +1,6 @@
 {
-    "title": "Storage ( 10% )",
-    "description": "Storage Section Practices",
+    "title": "Storage ( 10% ) Section",
+    "description": "Storage Related Problems Practices",
     "details": {
       "intro": {
         "text": "intro.md"
@@ -10,6 +10,10 @@
           "title": "Storage",
           "text": "step1/q.md",
           "verify": "step1/v.sh"
+        },{
+            "title": "Storage",
+            "text": "step2/q.md",
+            "verify": "step2/v.sh"
         }
       ],
       "finish": {
