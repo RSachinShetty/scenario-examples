@@ -10,18 +10,6 @@
           "title": "Storage",
           "text": "step1/q.md",
           "verify": "step1/v.sh"
-        },{
-            "title": "Storage",
-            "text": "step2/q.md",
-            "verify": "step2/v.sh"
-        },{
-            "title": "Storage",
-            "text": "step3/q.md",
-            "verify": "step3/v.sh"
-        },{
-            "title": "Storage",
-            "text": "step4/q.md",
-            "verify": "step4/v.sh"
         }
       ],
       "finish": {
