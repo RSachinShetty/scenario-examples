@@ -11,7 +11,7 @@ if kubectl get storageclass ${storage_class_name} &> /dev/null; then
   allow_expansion=$(kubectl get storageclass ${storage_class_name} -o=jsonpath='{.allowVolumeExpansion}')
 
   # Check if the properties match the expected values
-  if [ "$provisioner" == "kubernetes.io/no-provisioner" ] && [ "$binding_mode" == "WaitForFirstConsumer" ] && [ "allow_expansion" == "true" ]; then
+  if [ "$provisioner" == "kubernetes.io/no-provisioner" ] && [ "$binding_mode" == "WaitForFirstConsumer" ] && [ "$allow_expansion" == "true" ]; then
     echo "StorageClass '${storage_class_name}' exists and meets the criteria."
     exit 0
   else
