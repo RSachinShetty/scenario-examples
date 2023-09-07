@@ -1,13 +1,13 @@
 {
-    "title": "CKA MOCK EXAM",
-    "description": "CKA MOCK EXAM PRACTICES",
+    "title": "Storage",
+    "description": "Storage Section Practices",
     "details": {
       "intro": {
         "text": "intro.md"
       },
       "steps": [
         {
-          "title": "Create a pod",
+          "title": "Storage",
           "text": "step1/q.md",
           "verify": "step1/v.sh"
         }
