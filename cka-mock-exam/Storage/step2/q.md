@@ -7,7 +7,14 @@ For this question, please set this context (In exam, diff cluster name)
 
 <br>
 
-Create a storage class called `green-stc` as per the properties given below:
+You are responsible for provisioning storage for a Kubernetes cluster. Your task is to create a PersistentVolume (PV), a PersistentVolumeClaim (PVC), and deploy a pod that uses the PVC for shared storage.
 
-- Provisioner should be `kubernetes.io/no-provisioner`.
-- Volume binding mode should be `WaitForFirstConsumer`.
+Here are the specific requirements:
+* Create a PersistentVolume (PV) named `my-pv-cka` with the following properties:
+    * Storage capacity: `100Mi`
+    * Access mode: `ReadWriteOnce`
+    * Host path: `/mnt/data`
+* Create a PersistentVolumeClaim (PVC) named `my-pvc-cka` to claim storage from the `my-pv-cka` PV.
+* Deploy a pod named `my-pod-cka` using the `nginx` container image.
+* Mount the PVC, my-pvc-cka, to the pod at the path `/var/www/html`.
+Ensure that the PV, PVC, and pod are successfully created, and the pod is in a Running state.

@@ -11,3 +11,4 @@ Create a storage class called `green-stc` as per the properties given below:
 
 - Provisioner should be `kubernetes.io/no-provisioner`.
 - Volume binding mode should be `WaitForFirstConsumer`.
+- Volume expansion should be `enabled`.

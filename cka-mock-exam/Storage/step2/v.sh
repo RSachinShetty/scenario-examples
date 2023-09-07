@@ -1,24 +1,72 @@
 #!/bin/bash
 
-# Define the name of the StorageClass
-storage_class_name="green-stc"
+# Verify PV
+pv_name="my-pv-cka"
+if kubectl get pv "$pv_name" &> /dev/null; then
+  # Get PV details
+  pv_info=$(kubectl describe pv "$pv_name")
 
-# Verify if the StorageClass exists
-if kubectl get storageclass ${storage_class_name} &> /dev/null; then
-  # StorageClass exists, check its properties
-  provisioner=$(kubectl get storageclass ${storage_class_name} -o=jsonpath='{.provisioner}')
-  binding_mode=$(kubectl get storageclass ${storage_class_name} -o=jsonpath='{.volumeBindingMode}')
+  # Check storage capacity
+  if echo "$pv_info" | grep -q "Capacity:.*100Mi"; then
+    echo "PV $pv_name has the correct storage capacity."
+  else
+    echo "Error: PV $pv_name does not have the correct storage capacity."
+    exit 1
+  fi
 
-  # Check if the properties match the expected values
-  if [ "$provisioner" == "kubernetes.io/no-provisioner" ] && [ "$binding_mode" == "WaitForFirstConsumer" ]; then
-    echo "StorageClass '${storage_class_name}' exists and meets the criteria."
+  # Check access mode
+  if echo "$pv_info" | grep -q "Access Modes:\s*ReadWriteOnce"; then
+    echo "PV $pv_name has the correct access mode."
+  else
+    echo "Error: PV $pv_name does not have the correct access mode."
+    exit 1
+  fi
+
+  # Check host path
+  if echo "$pv_info" | grep -q "Path:\s*/mnt/data"; then
+    echo "PV $pv_name has the correct host path."
+  else
+    echo "Error: PV $pv_name does not have the correct host path."
+    exit 1
+  fi
+
+else
+  echo "Error: PV $pv_name does not exist."
+  exit 1
+fi
+
+# Verify PVC
+pvc_name="my-pvc-cka"
+if kubectl get pvc "$pvc_name" &> /dev/null; then
+  # Get PVC details
+  pvc_info=$(kubectl describe pvc "$pvc_name")
+
+  # Check access mode
+  if echo "$pvc_info" | grep -q "Access Modes:\s*ReadWriteOnce"; then
+    echo "PVC $pvc_name has the correct access mode."
+  else
+    echo "Error: PVC $pvc_name does not have the correct access mode."
+    exit 1
+  fi
+
+else
+  echo "Error: PVC $pvc_name does not exist."
+  exit 1
+fi
+
+# Verify Pod
+pod_name="my-pod-cka"
+if kubectl get pod "$pod_name" &> /dev/null; then
+  sleep 25  # Wait for 25 seconds to allow the pod to become Running
+  pod_status=$(kubectl get pod "$pod_name" -o jsonpath='{.status.phase}')
+  if [ "$pod_status" == "Running" ]; then
+    echo "Pod $pod_name is in a Running state."
     exit 0
   else
-    echo "Error: StorageClass '${storage_class_name}' exists but does not meet the criteria."
+    echo "Error: Pod $pod_name is not in a Running state. Current state: $pod_status"
     exit 1
   fi
 else
-  # StorageClass doesn't exist
-  echo "Error: StorageClass '${storage_class_name}' does not exist."
+  echo "Error: Pod $pod_name does not exist."
   exit 1
 fi
