@@ -7,7 +7,7 @@ if kubectl get pv "$pv_name" &> /dev/null; then
   pv_info=$(kubectl describe pv "$pv_name")
 
   # Check storage capacity
-  if echo "$pv_info" | grep -q "Capacity:.*100Mi"; then
+  if [[ $pv_info =~ Capacity:[[:space:]]*100Mi ]]; then
     echo "PV $pv_name has the correct storage capacity."
   else
     echo "Error: PV $pv_name does not have the correct storage capacity."
@@ -15,7 +15,7 @@ if kubectl get pv "$pv_name" &> /dev/null; then
   fi
 
   # Check access mode
-  if echo "$pv_info" | grep -q "Access Modes:\s*ReadWriteOnce"; then
+  if [[ $pv_info =~ Access[[:space:]]Modes:[[:space:]]*ReadWriteOnce ]]; then
     echo "PV $pv_name has the correct access mode."
   else
     echo "Error: PV $pv_name does not have the correct access mode."
@@ -23,7 +23,7 @@ if kubectl get pv "$pv_name" &> /dev/null; then
   fi
 
   # Check host path
-  if echo "$pv_info" | grep -q "Path:\s*/mnt/data"; then
+  if [[ $pv_info =~ Path:[[:space:]]*/mnt/data ]]; then
     echo "PV $pv_name has the correct host path."
   else
     echo "Error: PV $pv_name does not have the correct host path."
@@ -42,16 +42,15 @@ if kubectl get pvc "$pvc_name" &> /dev/null; then
   pvc_info=$(kubectl describe pvc "$pvc_name")
 
   # Check access mode
-  if echo "$pvc_info" | grep -q "Access Modes:\s*ReadWriteOnce"; then
+  if [[ $pvc_info =~ Access[[:space:]]Modes:[[:space:]]*ReadWriteOnce ]]; then
     echo "PVC $pvc_name has the correct access mode."
   else
     echo "Error: PVC $pvc_name does not have the correct access mode."
     exit 1
   fi
 
-  # Check storage request size
-  storage_request=$(echo "$pvc_info" | grep "Storage Request" | awk '{print $3}')
-  if [ "$storage_request" == "100Mi" ]; then
+  # Check storage request size (adjust the value as needed)
+  if [[ $pvc_info =~ Storage:[[:space:]]*100Mi ]]; then
     echo "PVC $pvc_name has the correct storage request size."
   else
     echo "Error: PVC $pvc_name does not have the correct storage request size."
