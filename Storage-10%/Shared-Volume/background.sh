@@ -24,21 +24,12 @@ spec:
     requests:
       storage: 100Mi
 ---
-apiVersion: apps/v1
-kind: Deployment
+apiVersion: v1
+kind: Pod
 metadata:
-  name: pink-app-cka
+  name: my-pod-cka
 spec:
-  replicas: 2
-  selector:
-    matchLabels:
-      app: pink-app-cka
-  template:
-    metadata:
-      labels:
-        app: pink-app-cka
-    spec:
-      containers:
-        - name: nginx-container
-          image: nginx
+  containers:
+    - name: nginx-container
+      image: nginx
 EOF
