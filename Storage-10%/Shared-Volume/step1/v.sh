@@ -11,6 +11,7 @@ sidecar_name="sidecar-container"
 mount_path_main="/var/www/html"
 mount_path_sidecar="/var/www/shared"
 sidecar_command="tail -f /dev/null"
+sidecar_image="busybox"
 
 # Verify PVC Specifications
 pvc_info=$(kubectl get pvc "$pvc_name" -o=json)
@@ -40,8 +41,18 @@ main_container_mounts=$(kubectl get deployment "$deployment_name" -o=jsonpath='{
 sidecar_container_mounts=$(kubectl get deployment "$deployment_name" -o=jsonpath='{.spec.template.spec.containers[?(@.name == "'"$sidecar_name"'")].volumeMounts[*].mountPath}')
 sidecar_container_command=$(kubectl get deployment "$deployment_name" -o=jsonpath='{.spec.template.spec.containers[?(@.name == "'"$sidecar_name"'")].command[*]}')
 
+# Check if the sidecar container with the specified name and image exists
 if [ "$main_container_mounts" == "$mount_path_main" ] && [ "$sidecar_container_mounts" == "$mount_path_sidecar" ] && [ "$sidecar_container_command" == "${sidecar_command}" ]; then
   echo "Deployment $deployment_name meets the criteria."
+  
+  # Check if the sidecar container with the specified image exists
+  sidecar_image_check=$(kubectl get deployment "$deployment_name" -o=jsonpath='{.spec.template.spec.containers[?(@.name == "'"$sidecar_name"'")].image}')
+  if [ "$sidecar_image_check" == "$sidecar_image" ]; then
+    echo "Sidecar container with image $sidecar_image found."
+  else
+    echo "Error: Sidecar container with image $sidecar_image not found."
+    exit 1
+  fi
 else
   echo "Error: Deployment $deployment_name does not meet the criteria."
   exit 1

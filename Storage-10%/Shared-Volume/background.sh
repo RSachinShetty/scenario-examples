@@ -4,7 +4,7 @@ kubectl apply -f - <<EOF
 apiVersion: v1
 kind: PersistentVolume
 metadata:
-  name: my-pv-cka
+  name: pink-pv-cka
 spec:
   capacity:
     storage: 100Mi
@@ -16,7 +16,7 @@ spec:
 apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
-  name: my-pvc-cka
+  name: pink-pvc-cka
 spec:
   accessModes:
     - ReadWriteOnce
@@ -27,16 +27,16 @@ spec:
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: my-deployment-cka
+  name: pink-app-cka
 spec:
   replicas: 2
   selector:
     matchLabels:
-      app: my-app-cka
+      app: pink-app-cka
   template:
     metadata:
       labels:
-        app: my-app-cka
+        app: pink-app-cka
     spec:
       containers:
         - name: nginx-container
