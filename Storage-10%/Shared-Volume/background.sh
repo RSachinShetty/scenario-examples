@@ -12,7 +12,6 @@ spec:
     - ReadWriteOnce
   hostPath:
     path: /mnt/data
-
 ---
 apiVersion: v1
 kind: PersistentVolumeClaim
@@ -23,9 +22,8 @@ spec:
     - ReadWriteOnce
   resources:
     requests:
-      storage: 100Mi
+      storage: 50Mi
 ---
-
 apiVersion: apps/v1
 kind: Deployment
 metadata:
@@ -34,11 +32,11 @@ spec:
   replicas: 2
   selector:
     matchLabels:
-      app: my-app-cka
+      app: pink-app-cka
   template:
     metadata:
       labels:
-        app: my-app-cka
+        app: pink-app-cka
     spec:
       containers:
         - name: nginx-container
