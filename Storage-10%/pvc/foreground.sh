@@ -1,3 +1,4 @@
 echo "Setting Up Environment..."
-
-kubectl apply -f assests/pv.yaml
+ls
+echo "kubectl apply..."
+kubectl apply -f pv.yaml

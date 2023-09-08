@@ -1,6 +1,6 @@
 {
     "title": "Persistent Volume Claim",
-    "description": "Storage Related Problems Practices",
+    "description": "Weight: 2",
     "details": {
       "intro": {
         "text": "intro.md",
@@ -13,6 +13,11 @@
           "verify": "step1/v.sh"
         }
       ],
+      "assets": {
+        "host01": [
+          {"file": "pv.yaml", "target": "~/"}
+        ]
+      },
       "finish": {
         "text": "finish.md"
       }
