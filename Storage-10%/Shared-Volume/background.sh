@@ -4,10 +4,10 @@ kubectl apply -f - <<EOF
 apiVersion: v1
 kind: PersistentVolume
 metadata:
-  name: app-pv-cka
+  name: my-pv-cka
 spec:
   capacity:
-    storage: 50Mi
+    storage: 100Mi
   accessModes:
     - ReadWriteOnce
   hostPath:
@@ -16,29 +16,27 @@ spec:
 apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
-  name: app-pvc-cka
+  name: my-pvc-cka
 spec:
   accessModes:
     - ReadWriteOnce
   resources:
     requests:
-      storage: 20Mi
+      storage: 100Mi
 ---
-apiVersion: apps/v1
-kind: Deployment
+apiVersion: v1
+kind: Pod
 metadata:
-  name: app-deployment-cka
+  name: my-pod-cka
 spec:
-  replicas: 2
-  selector:
-    matchLabels:
-      app: app-app-cka
-  template:
-    metadata:
-      labels:
-        app: app-app-cka
-    spec:
-      containers:
-        - name: nginx-container
-          image: nginx
+  containers:
+    - name: nginx-container
+      image: nginx
+      volumeMounts:
+        - name: shared-storage
+          mountPath: /var/www/html
+  volumes:
+    - name: shared-storage
+      persistentVolumeClaim:
+        claimName: my-pvc-cka
 EOF
