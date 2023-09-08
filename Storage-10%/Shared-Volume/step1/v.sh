@@ -1,52 +1,31 @@
 #!/bin/bash
 
-# PVC Specifications
-pvc_name="pink-pvc-cka"
-requested_storage="100Mi"
-
-# Deployment Specifications
-deployment_name="pink-app-cka"
-container_name="nginx-container"
+# Pod Specifications
+pod_name="my-pod-cka"
+nginx_container_name="nginx-container"
 sidecar_name="sidecar-container"
 mount_path_main="/var/www/html"
 mount_path_sidecar="/var/www/shared"
-sidecar_command="tail -f /dev/null"
+sidecar_command=("sh" "-c" "tail -f /dev/null")
 sidecar_image="busybox"
 
-# Verify PVC Specifications
-pvc_info=$(kubectl get pvc "$pvc_name" -o=json)
+# Verify Pod Specifications
+pod_info=$(kubectl get pod "$pod_name" -o=json)
 if [ $? -ne 0 ]; then
-  echo "Error: PVC $pvc_name not found."
+  echo "Error: Pod $pod_name not found."
   exit 1
 fi
 
-pvc_access_modes=$(kubectl get pvc "$pvc_name" -o=jsonpath='{.spec.accessModes[0]}')
-pvc_storage=$(kubectl get pvc "$pvc_name" -o=jsonpath='{.spec.resources.requests.storage}')
+nginx_container_mounts=$(kubectl get pod "$pod_name" -o=jsonpath='{.spec.containers[?(@.name == "'"$nginx_container_name"'")].volumeMounts[*].mountPath}')
+sidecar_container_mounts=$(kubectl get pod "$pod_name" -o=jsonpath='{.spec.containers[?(@.name == "'"$sidecar_name"'")].volumeMounts[*].mountPath}')
+sidecar_container_command=$(kubectl get pod "$pod_name" -o=jsonpath='{.spec.containers[?(@.name == "'"$sidecar_name"'")].command[*]}')
 
-if [ "$pvc_access_modes" == "ReadWriteOnce" ] && [ "$pvc_storage" == "$requested_storage" ]; then
-  echo "PVC $pvc_name meets the criteria."
-else
-  echo "Error: PVC $pvc_name does not meet the criteria."
-  exit 1
-fi
-
-# Verify Deployment Specifications
-deployment_info=$(kubectl get deployment "$deployment_name" -o=json)
-if [ $? -ne 0 ]; then
-  echo "Error: Deployment $deployment_name not found."
-  exit 1
-fi
-
-main_container_mounts=$(kubectl get deployment "$deployment_name" -o=jsonpath='{.spec.template.spec.containers[?(@.name == "'"$container_name"'")].volumeMounts[*].mountPath}')
-sidecar_container_mounts=$(kubectl get deployment "$deployment_name" -o=jsonpath='{.spec.template.spec.containers[?(@.name == "'"$sidecar_name"'")].volumeMounts[*].mountPath}')
-sidecar_container_command=$(kubectl get deployment "$deployment_name" -o=jsonpath='{.spec.template.spec.containers[?(@.name == "'"$sidecar_name"'")].command[*]}')
-
-# Check if the sidecar container with the specified name and image exists
-if [ "$main_container_mounts" == "$mount_path_main" ] && [ "$sidecar_container_mounts" == "$mount_path_sidecar" ] && [ "$sidecar_container_command" == "${sidecar_command}" ]; then
-  echo "Deployment $deployment_name meets the criteria."
+# Check if the main container and sidecar container have the specified volume mounts and command
+if [ "$nginx_container_mounts" == "$mount_path_main" ] && [ "$sidecar_container_mounts" == "$mount_path_sidecar" ] && [ "${sidecar_container_command[@]}" == "${sidecar_command[*]}" ]; then
+  echo "Pod $pod_name meets the criteria."
   
   # Check if the sidecar container with the specified image exists
-  sidecar_image_check=$(kubectl get deployment "$deployment_name" -o=jsonpath='{.spec.template.spec.containers[?(@.name == "'"$sidecar_name"'")].image}')
+  sidecar_image_check=$(kubectl get pod "$pod_name" -o=jsonpath='{.spec.containers[?(@.name == "'"$sidecar_name"'")].image}')
   if [ "$sidecar_image_check" == "$sidecar_image" ]; then
     echo "Sidecar container with image $sidecar_image found."
   else
@@ -54,7 +33,7 @@ if [ "$main_container_mounts" == "$mount_path_main" ] && [ "$sidecar_container_m
     exit 1
   fi
 else
-  echo "Error: Deployment $deployment_name does not meet the criteria."
+  echo "Error: Pod $pod_name does not meet the criteria."
   exit 1
 fi
 
