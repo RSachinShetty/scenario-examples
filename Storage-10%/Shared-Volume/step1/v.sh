@@ -6,7 +6,7 @@ nginx_container_name="nginx-container"
 sidecar_name="sidecar-container"
 mount_path_main="/var/www/html"
 mount_path_sidecar="/var/www/shared"
-sidecar_command=("sh" "-c" "tail -f /dev/null")
+sidecar_command="sh -c tail -f /dev/null"
 sidecar_image="busybox"
 read_only_expected="true"
 
@@ -17,17 +17,17 @@ if [ $? -ne 0 ]; then
   exit 1
 fi
 
-nginx_container_mounts=$(kubectl get pod "$pod_name" -o=jsonpath='{.spec.containers[?(@.name == "'"$nginx_container_name"'")].volumeMounts[*].mountPath}')
-sidecar_container_mounts=$(kubectl get pod "$pod_name" -o=jsonpath='{.spec.containers[?(@.name == "'"$sidecar_name"'")].volumeMounts[*].mountPath}')
-sidecar_container_command=$(kubectl get pod "$pod_name" -o=jsonpath='{.spec.containers[?(@.name == "'"$sidecar_name"'")].command[*]}')
-sidecar_container_read_only=$(kubectl get pod "$pod_name" -o=jsonpath='{.spec.containers[?(@.name == "'"$sidecar_name"'")].volumeMounts[?(@.name == "shared-storage")].readOnly}')
+nginx_container_mounts=$(kubectl get pod "$pod_name" -o=jsonpath='{.spec.containers[?(@.name == "nginx-container")].volumeMounts[?(@.name == "shared-storage")].mountPath}')
+sidecar_container_mounts=$(kubectl get pod "$pod_name" -o=jsonpath='{.spec.containers[?(@.name == "sidecar-container")].volumeMounts[?(@.name == "shared-storage")].mountPath}')
+sidecar_container_command=$(kubectl get pod "$pod_name" -o=jsonpath='{.spec.containers[?(@.name == "sidecar-container")].command[*]}')
+sidecar_container_read_only=$(kubectl get pod "$pod_name" -o=jsonpath='{.spec.containers[?(@.name == "sidecar-container")].volumeMounts[?(@.name == "shared-storage")].readOnly}')
 
 # Check if the main container and sidecar container have the specified volume mounts, command, and read-only access
 if [ "$nginx_container_mounts" == "$mount_path_main" ] && [ "$sidecar_container_mounts" == "$mount_path_sidecar" ] && [ "${sidecar_container_command[@]}" == "${sidecar_command[*]}" ]; then
   echo "Pod $pod_name meets the criteria for volume mounts and command."
   
   # Check if the sidecar container with the specified image exists
-  sidecar_image_check=$(kubectl get pod "$pod_name" -o=jsonpath='{.spec.containers[?(@.name == "'"$sidecar_name"'")].image}')
+  sidecar_image_check=$(kubectl get pod "$pod_name" -o=jsonpath='{.spec.containers[?(@.name == "sidecar-container")].image}')
   if [ "$sidecar_image_check" == "$sidecar_image" ]; then
     echo "Sidecar container with image $sidecar_image found."
     
