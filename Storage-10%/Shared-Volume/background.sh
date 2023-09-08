@@ -22,7 +22,7 @@ spec:
     - ReadWriteOnce
   resources:
     requests:
-      storage: 50Mi
+      storage: 100Mi
 ---
 apiVersion: v1
 kind: Pod
@@ -32,4 +32,11 @@ spec:
   containers:
     - name: nginx-container
       image: nginx
+      volumeMounts:
+        - name: shared-storage
+          mountPath: /var/www/html
+  volumes:
+    - name: shared-storage
+      persistentVolumeClaim:
+        claimName: my-pvc-cka
 EOF
