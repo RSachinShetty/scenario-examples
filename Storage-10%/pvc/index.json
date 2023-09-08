@@ -15,7 +15,7 @@
       ],
       "assets": {
         "host01": [
-          {"file": "pv.yaml", "target": "/manifest"}
+          {"file": "pv.yaml", "target": "~/", "chmod": "+w"}
         ]
       },
       "finish": {
