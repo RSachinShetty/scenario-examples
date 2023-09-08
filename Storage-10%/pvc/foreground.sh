@@ -1,7 +1,16 @@
-echo "Setting Up Environment..."
-ls
-echo "kubectl apply..."
-ls /my/location
-echo "kubectl apply..."
+#!/bin/bash
 
-kubectl apply -f pv.yaml
+kubectl apply -f - <<EOF
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: red-pvc-cka
+spec:
+  volumeName: red-pv-cka
+  storageClassName: manual
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 30Mi
+EOF

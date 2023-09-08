@@ -13,12 +13,6 @@
           "verify": "step1/v.sh"
         }
       ],
-      "assets": {
-        "controlplane": [
-          {"file": "pv.yaml", "target": "~/", "chmod": "+w"},
-          {"file": "pv.yaml", "target": "/my/location", "chmod": "+w"}
-        ]
-      },
       "finish": {
         "text": "finish.md"
       }
