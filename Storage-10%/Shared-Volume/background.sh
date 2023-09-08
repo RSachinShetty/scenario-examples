@@ -4,7 +4,7 @@ kubectl apply -f - <<EOF
 apiVersion: v1
 kind: PersistentVolume
 metadata:
-  name: pink-pv-cka
+  name: my-pv-cka
 spec:
   capacity:
     storage: 100Mi
@@ -16,7 +16,7 @@ spec:
 apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
-  name: pink-pvc-cka
+  name: my-pvc-cka
 spec:
   accessModes:
     - ReadWriteOnce
