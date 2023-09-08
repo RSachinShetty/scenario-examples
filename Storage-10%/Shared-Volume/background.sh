@@ -14,6 +14,17 @@ spec:
     path: /mnt/data
 
 ---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: pink-pvc-cka
+spec:
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 100Mi
+---
 
 apiVersion: apps/v1
 kind: Deployment
