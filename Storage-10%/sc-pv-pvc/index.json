@@ -2,6 +2,9 @@
     "title": "Persistent Volume, Persistent Volume Claim, Storage Class",
     "description": "Weight: 8",
     "details": {
+      "intro": {
+        "text": "intro.md"
+      },
       "steps": [
         {
           "title": "Storage",
