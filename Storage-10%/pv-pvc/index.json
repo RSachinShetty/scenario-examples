@@ -1,0 +1,23 @@
+{
+    "title": "Persistent Volume, Persistent Volume Claim",
+    "description": "Weight: 8",
+    "details": {
+      "intro": {
+        "text": "intro.md",
+        "background": "background.sh"
+      },
+      "steps": [
+        {
+          "title": "Storage",
+          "text": "step1/q.md",
+          "verify": "step1/v.sh"
+        }
+      ],
+      "finish": {
+        "text": "finish.md"
+      }
+    },
+    "backend": {
+      "imageid": "kubernetes-kubeadm-2nodes"
+    }
+}
