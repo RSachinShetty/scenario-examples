@@ -9,7 +9,7 @@ For this question, please set this context (In exam, diff cluster name)
 
 An existing nginx deployment, `pink-app-cka`, is currently deployed on the cluster. Your task is to implement the following modifications:
 
-* Create a Persistent Volume Claim (PVC) named `pink-pvc-cka` and associate it with the existing deployment. This PVC should request `100Mi` of storage from an existing Persistent Volume (PV) named `pink-pv-cka`.
+Persistent Volume Claim (PVC) named `pink-pvc-cka` and Persistent Volume (PV) named `pink-pv-cka` are available.
 
 * Create a volume named `shared-storage` and associate it with a PersistentVolumeClaim named `pink-pvc-cka`. Mount this volume at the path `/var/www/html` within the nginx-container container of the Deployment.
 
