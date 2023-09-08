@@ -11,5 +11,5 @@ A persistent volume named `red-pv-cka` is available. Your task is to create a Pe
 
 Ensure the following criteria are met:
 
-Access mode: `ReadWriteOnce`
-Storage class: `manual`
+* Access mode: `ReadWriteOnce`
+* Storage class: `manual`

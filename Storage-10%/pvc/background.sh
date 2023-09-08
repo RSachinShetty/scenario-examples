@@ -7,7 +7,7 @@ metadata:
   name: red-pv-cka
 spec:
   capacity:
-    storage: 30Mi
+    storage: 50Mi
   accessModes:
     - ReadWriteOnce
   storageClassName: manual
