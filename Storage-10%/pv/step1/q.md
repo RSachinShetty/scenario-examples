@@ -9,6 +9,6 @@ For this question, please set this context (In exam, diff cluster name)
 
 Create a PersistentVolume (PV) named `black-pv-cka` with the following specifications:
 
-Volume Type: `hostPath`
-Path: `/opt/black-pv-cka`
-Capacity: `50Mi`
+* Volume Type: `hostPath`
+* Path: `/opt/black-pv-cka`
+* Capacity: `50Mi`
