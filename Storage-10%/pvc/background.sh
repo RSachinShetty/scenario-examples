@@ -2,15 +2,15 @@
 
 kubectl apply -f - <<EOF
 apiVersion: v1
-kind: PersistentVolumeClaim
+kind: PersistentVolume
 metadata:
-  name: red-pvc-cka
+  name: red-pv-cka
 spec:
-  volumeName: red-pv-cka
-  storageClassName: manual
+  capacity:
+    storage: 30Mi
   accessModes:
     - ReadWriteOnce
-  resources:
-    requests:
-      storage: 30Mi
+  storageClassName: manual
+  hostPath:
+    path: /mnt/data
 EOF
