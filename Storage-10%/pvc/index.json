@@ -1,0 +1,23 @@
+{
+    "title": "Persistent Volume Claim",
+    "description": "Storage Related Problems Practices",
+    "details": {
+      "intro": {
+        "text": "intro.md",
+        "foreground": "foreground.sh"
+      },
+      "steps": [
+        {
+          "title": "Storage",
+          "text": "step1/q.md",
+          "verify": "step1/v.sh"
+        }
+      ],
+      "finish": {
+        "text": "finish.md"
+      }
+    },
+    "backend": {
+      "imageid": "kubernetes-kubeadm-2nodes"
+    }
+}
