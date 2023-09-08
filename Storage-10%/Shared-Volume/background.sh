@@ -24,19 +24,21 @@ spec:
     requests:
       storage: 100Mi
 ---
-apiVersion: v1
-kind: Pod
+apiVersion: apps/v1
+kind: Deployment
 metadata:
-  name: my-pod-cka
+  name: my-deployment-cka
 spec:
-  containers:
-    - name: nginx-container
-      image: nginx
-      volumeMounts:
-        - name: shared-storage
-          mountPath: /var/www/html
-  volumes:
-    - name: shared-storage
-      persistentVolumeClaim:
-        claimName: my-pvc-cka
+  replicas: 2
+  selector:
+    matchLabels:
+      app: my-app-cka
+  template:
+    metadata:
+      labels:
+        app: my-app-cka
+    spec:
+      containers:
+        - name: nginx-container
+          image: nginx
 EOF
