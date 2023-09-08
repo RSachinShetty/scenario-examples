@@ -7,7 +7,7 @@ metadata:
   name: app-pv-cka
 spec:
   capacity:
-    storage: 100Mi
+    storage: 50Mi
   accessModes:
     - ReadWriteOnce
   hostPath:
@@ -22,7 +22,7 @@ spec:
     - ReadWriteOnce
   resources:
     requests:
-      storage: 100Mi
+      storage: 50Mi
 ---
 apiVersion: apps/v1
 kind: Deployment
