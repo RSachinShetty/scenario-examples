@@ -15,7 +15,7 @@
       ],
       "assets": {
         "controlplane": [
-          {"file": "pv.yaml", "target": "~/", "chmod": "+w"}
+          {"file": "pv.yaml", "target": "/", "chmod": "+w"}
         ]
       },
       "finish": {
