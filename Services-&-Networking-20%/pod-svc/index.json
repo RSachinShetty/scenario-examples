@@ -1,13 +1,13 @@
 {
-    "title": "Persistent Volume",
-    "description": "Weight: 1",
+    "title": "Pod, Service",
+    "description": "Weight: 4",
     "details": {
       "intro": {
         "text": "intro.md"
       },
       "steps": [
         {
-          "title": "Storage",
+          "title": "Services & Networking",
           "text": "step1/q.md",
           "verify": "step1/v.sh"
         }
