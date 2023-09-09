@@ -40,6 +40,15 @@ else
   exit 1
 fi
 
+# Verify Pod Status
+pod_status=$(kubectl get pod "$pod_name" -o=jsonpath='{.status.phase}')
+if [ "$pod_status" == "Running" ]; then
+  echo "Pod $pod_name is running."
+else
+  echo "Error: Pod $pod_name is not running (Current Status: $pod_status)."
+  exit 1
+fi
+
 # Verify Tolerations
 pod_tolerations=$(kubectl get pod "$pod_name" -o=jsonpath='{.spec.tolerations[0]}')
 expected_tolerations='{"effect":"NoSchedule","key":"node-role.kubernetes.io/control-plane","operator":"Exists"}'
