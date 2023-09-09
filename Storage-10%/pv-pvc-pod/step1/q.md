@@ -14,7 +14,9 @@ Here are the specific requirements:
     * Storage capacity: `100Mi`
     * Access mode: `ReadWriteOnce`
     * Host path: `/mnt/data`
-* Create a PersistentVolumeClaim (PVC) named `my-pvc-cka` to claim storage from the `my-pv-cka` PV.
+    * Storage class: `standard`
+* Create a PersistentVolumeClaim (PVC) named `my-pvc-cka` to claim storage from the `my-pv-cka` PV, with the following properties:
+    * Storage class: `standard`
 * Deploy a pod named `my-pod-cka` using the `nginx` container image.
 * Mount the PVC, `my-pvc-cka`, to the pod at the path `/var/www/html`.
 Ensure that the PV, PVC, and pod are successfully created, and the pod is in a Running state.

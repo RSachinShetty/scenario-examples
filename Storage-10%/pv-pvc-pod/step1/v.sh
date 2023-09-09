@@ -1,88 +1,84 @@
-#!/bin/bash
-
-# Function to check if a resource exists
-check_resource() {
-  local resource_type="$1"
-  local resource_name="$2"
-  if kubectl get "$resource_type" "$resource_name" &> /dev/null; then
-    echo "$resource_type $resource_name exists."
-  else
-    echo "Error: $resource_type $resource_name does not exist."
-    exit 1
-  fi
-}
+# PV Specifications
+pv_name="my-pv-cka"
+pv_storage_capacity="100Mi"
+pv_access_mode="ReadWriteOnce"
+pv_host_path="/mnt/data"
+pv_storage_class="standard"
 
 # Verify PV
-check_resource "pv" "my-pv-cka"
-pv_info=$(kubectl describe pv my-pv-cka)
-
-# Check storage capacity
-if [[ $pv_info =~ Capacity:[[:space:]]*100Mi ]]; then
-  echo "PV my-pv-cka has the correct storage capacity."
-else
-  echo "Error: PV my-pv-cka does not have the correct storage capacity."
+pv_info=$(kubectl get pv "$pv_name" -o=json)
+if [ $? -ne 0 ]; then
+  echo "Error: PV $pv_name not found."
   exit 1
 fi
 
-# Check access mode
-pv_name="my-pv-cka"
-if kubectl get pv "$pv_name" &> /dev/null; then
-  # Get PV details in JSON format
-  pv_info_json=$(kubectl get pv "$pv_name" -o json)
+pv_capacity=$(kubectl get pv "$pv_name" -o=jsonpath='{.spec.capacity.storage}')
+pv_mode=$(kubectl get pv "$pv_name" -o=jsonpath='{.spec.accessModes[0]}')
+pv_path=$(kubectl get pv "$pv_name" -o=jsonpath='{.spec.hostPath.path}')
+pv_class=$(kubectl get pv "$pv_name" -o=jsonpath='{.spec.storageClassName}')
 
-  # Extract access mode using Python
-  access_mode=$(kubectl get pv my-pv-cka -o=jsonpath='{.spec.accessModes[*]}')
-
-  # Check access mode
-  if [[ "$access_mode" == "ReadWriteOnce" ]]; then
-    echo "PV $pv_name has the correct access mode."
-  else
-    echo "Error: PV $pv_name does not have the correct access mode."
-    exit 1
-  fi
+if [ "$pv_capacity" == "$pv_storage_capacity" ] && [ "$pv_mode" == "$pv_access_mode" ] && [ "$pv_path" == "$pv_host_path" ] && [ "$pv_class" == "$pv_storage_class" ]; then
+  echo "PV $pv_name meets the criteria."
 else
-  echo "Error: PV $pv_name does not exist."
+  echo "Error: PV $pv_name does not meet the criteria."
   exit 1
 fi
 
-# Check host path
-if [[ $pv_info =~ Path:[[:space:]]*/mnt/data ]]; then
-  echo "PV my-pv-cka has the correct host path."
-else
-  echo "Error: PV my-pv-cka does not have the correct host path."
-  exit 1
-fi
+# Continue with PVC and Pod creation
+# PVC Specifications
+pvc_name="my-pvc-cka"
+pvc_storage_class="standard"
 
 # Verify PVC
-check_resource "pvc" "my-pvc-cka"
-pvc_info=$(kubectl describe pvc my-pvc-cka)
-
-access_mode=$(kubectl get pvc my-pvc-cka -o=jsonpath='{.spec.accessModes[*]}')
-# Check access mode
-if [[ "$access_mode" == "ReadWriteOnce" ]]; then
-  echo "PVC my-pvc-cka has the correct access mode."
-else
-  echo "Error: PVC my-pvc-cka does not have the correct access mode."
+pvc_info=$(kubectl get pvc "$pvc_name" -o=json)
+if [ $? -ne 0 ]; then
+  echo "Error: PVC $pvc_name not found."
   exit 1
 fi
 
-# Check storage request size
-storage_value=$(kubectl get pvc -o=jsonpath='{range .items[?(@.spec.resources.requests.storage=="100Mi")]}{@.spec.resources.requests.storage}{end}')
-if [[ $storage_value == "100Mi" ]]; then
-  echo "PVC my-pvc-cka has the correct storage request size."
+pvc_class=$(kubectl get pvc "$pvc_name" -o=jsonpath='{.spec.storageClassName}')
+
+if [ "$pvc_class" == "$pvc_storage_class" ]; then
+  echo "PVC $pvc_name meets the criteria."
 else
-  echo "Error: PVC my-pvc-cka does not have the correct storage request size."
+  echo "Error: PVC $pvc_name does not meet the criteria."
   exit 1
 fi
+
+# Continue with Pod creation
+# Pod Specifications
+pod_name="my-pod-cka"
 
 # Verify Pod
-check_resource "pod" "my-pod-cka"
-sleep 25  # Wait for 25 seconds to allow the pod to become Running
-pod_status=$(kubectl get pod my-pod-cka -o jsonpath='{.status.phase}')
-if [ "$pod_status" == "Running" ]; then
-  echo "Pod my-pod-cka is in a Running state."
-  exit 0
-else
-  echo "Error: Pod my-pod-cka is not in a Running state. Current state: $pod_status"
+pod_info=$(kubectl get pod "$pod_name" -o=json)
+if [ $? -ne 0 ]; then
+  echo "Error: Pod $pod_name not found."
   exit 1
 fi
+
+# Continue with PVC mounting
+# Pod PVC Mount Verification
+pod_volumes=$(kubectl get pod "$pod_name" -o=jsonpath='{.spec.volumes[0].persistentVolumeClaim.claimName}')
+pod_mount_path=$(kubectl get pod "$pod_name" -o=jsonpath='{.spec.containers[0].volumeMounts[0].mountPath}')
+
+if [ "$pod_volumes" == "$pvc_name" ] && [ "$pod_mount_path" == "/var/www/html" ]; then
+  echo "Pod $pod_name meets the criteria."
+else
+  echo "Error: Pod $pod_name does not meet the criteria."
+  exit 1
+fi
+
+# Pod Specifications
+pod_name="my-pod-cka"
+
+# Verify Pod Status
+pod_status=$(kubectl get pod "$pod_name" -o=jsonpath='{.status.phase}')
+
+if [ "$pod_status" == "Running" ]; then
+  echo "Pod $pod_name is in Running state."
+else
+  echo "Error: Pod $pod_name is not in the expected Running state."
+  exit 1
+fi
+
+echo "Validation successful!"
