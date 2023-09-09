@@ -12,6 +12,16 @@ spec:
 EOL
 
 kubectl apply -f - <<EOF
+apiVersion: storage.k8s.io/v1
+kind: StorageClass
+metadata:
+  name: nginx-stc-cka
+provisioner: kubernetes.io/no-provisioner
+volumeBindingMode: WaitForFirstConsumer
+allowVolumeExpansion: true   
+
+---
+
 apiVersion: v1
 kind: PersistentVolume
 metadata:
@@ -21,6 +31,15 @@ spec:
     storage: 100Mi
   accessModes:
     - ReadWriteOnce
-  hostPath:
-    path: /mnt/nginx-data-cka
+  storageClassName: nginx-stc-cka
+  local:
+    path: /opt/nginx-data-cka
+  nodeAffinity:
+    required:
+      nodeSelectorTerms:
+        - matchExpressions:
+            - key: kubernetes.io/hostname
+              operator: In
+              values:
+                - controlplane
 EOF
