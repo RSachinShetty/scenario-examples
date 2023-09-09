@@ -6,7 +6,7 @@ For this question, please set this context (In exam, diff cluster name)
 `kubectl config use-context kubernetes-admin@kubernetes`{{exec}}
 
 <br>
-
+ 
 You need to create a Kubernetes Pod and a Service to host a simple web application that prints "Hello, World!" when accessed. Follow these steps:
 
 Create a Pod named app-pod with the following specifications:
