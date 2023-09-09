@@ -1,6 +1,6 @@
 {
-    "title": "Persistent Volume Claim",
-    "description": "Weight: 2",
+    "title": "Persistent Volume Claim Resize",
+    "description": "Weight: 6",
     "details": {
       "intro": {
         "text": "intro.md",
