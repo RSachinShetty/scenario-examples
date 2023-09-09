@@ -40,4 +40,14 @@ else
   exit 1
 fi
 
+# Verify Tolerations
+pod_tolerations=$(kubectl get pod "$pod_name" -o=jsonpath='{.spec.tolerations[0]}')
+expected_tolerations='{"effect":"NoSchedule","key":"node-role.kubernetes.io/control-plane","operator":"Exists"}'
+if [ "$pod_tolerations" == "$expected_tolerations" ]; then
+  echo "Tolerations are correctly configured in Pod $pod_name."
+else
+  echo "Error: Tolerations in Pod $pod_name are not as expected."
+  exit 1
+fi
+
 echo "Validation successful!"

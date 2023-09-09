@@ -9,8 +9,8 @@ For this question, please set this context (In exam, diff cluster name)
 
 A Kubernetes pod definition file named `nginx-pod-cka.yaml` is available. Your task is to make the following modifications to the manifest file:
 
-* Create a Persistent Volume Claim (PVC) with the name `nginx-pvc-cka`. This PVC should request `80Mi` of storage from an existing Persistent Volume (PV) named `nginx-pv-cka`. Use the access mode `ReadWriteOnce`.
+* Create a Persistent Volume Claim (PVC) with the name `nginx-pvc-cka`. This PVC should request `80Mi` of storage from an existing Persistent Volume (PV) named `nginx-pv-cka` and Storage Class named`nginx-stc-cka`. Use the access mode `ReadWriteOnce`.
 * Add the created `nginx-pvc-cka` PVC to the existing `nginx-pod-cka` POD definition.
 * Mount the volume claimed by `nginx-pvc-cka` at the path `/var/www/html` within the `nginx-pod-cka` POD.
-
-Ensure that the `peach-pod-cka05-str` POD is running and that the Persistent Volume (PV) is successfully `bound`.
+* Add tolerations with the key `node-role.kubernetes.io/control-plane` set to `Exists` and effect `NoSchedule` to the `nginx-pod-cka` Pod
+* Ensure that the `peach-pod-cka05-str` POD is running and that the Persistent Volume (PV) is successfully `bound`.

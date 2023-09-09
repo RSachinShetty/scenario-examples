@@ -1,5 +1,7 @@
 #!/bin/bash
 
+mkdir -p /opt/nginx-data-cka
+
 cat <<EOL > nginx-pod-cka.yaml
 apiVersion: v1
 kind: Pod
