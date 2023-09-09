@@ -20,3 +20,5 @@ Here are the specific requirements:
 * Deploy a pod named `my-pod-cka` using the `nginx` container image.
 * Mount the PVC, `my-pvc-cka`, to the pod at the path `/var/www/html`.
 Ensure that the PV, PVC, and pod are successfully created, and the pod is in a Running state.
+
+Note: Binding and Pod might take time to come up, please have patience
