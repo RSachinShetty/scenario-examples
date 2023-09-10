@@ -61,7 +61,7 @@ compare_files() {
 
 kubectl exec -n dns-ns -i -t $POD_NAME -- nslookup kubernetes.default > dns-pod-test.txt
 
-#compare_files "dns-output.txt" "dns-pod-test.txt"
+compare_files "dns-output.txt" "dns-pod-test.txt"
 
 #rm -f dns-pod-test.txt #dns-pod-test-extracted.txt
 
