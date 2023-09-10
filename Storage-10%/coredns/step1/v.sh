@@ -6,7 +6,7 @@ if kubectl get rs dns-rs-cka -n dns-ns &> /dev/null; then
 else
     echo "Validation FAILED: ReplicaSet dns-rs-cka does not exist."
     exit 1
-fi
+fi  
 
 # Check if there are exactly 2 replicas
 replica_count=$(kubectl get rs dns-rs-cka -n dns-ns -o=jsonpath='{.status.replicas}')
