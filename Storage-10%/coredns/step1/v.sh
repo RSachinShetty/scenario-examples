@@ -18,8 +18,11 @@ else
 fi
 
 # Check if the container name is dns-container
-container_name=$(kubectl get pod -n dns-ns -o=jsonpath='{.items[0].spec.containers[0].name}')
-if [ "$container_name" == "dns-container" ]; then
+POD_NAME=$(kubectl get pods -n dns-ns -o jsonpath='{.items[0].metadata.name}')
+
+container_name=$(kubectl get pod -n dns-ns $POD_NAME -o=jsonpath='{.spec.containers[0].name}')
+# Check if the container name matches "dns-container"
+if [ "$container_name" = "dns-container" ]; then
     echo "Validation PASSED: Container name in dns-rs-cka is dns-container."
 else
     echo "Validation FAILED: Container name in dns-rs-cka is not dns-container."
@@ -28,7 +31,7 @@ fi
 
 # Check if the image used is registry.k8s.io/e2e-test-images/jessie-dnsutils:1.3
 image_name=$(kubectl get pod -n dns-ns -o=jsonpath='{.items[0].spec.containers[0].image}')
-if [ "$image_name" == "registry.k8s.io/e2e-test-images/jessie-dnsutils:1.3" ]; then
+if [ "$image_name" = "registry.k8s.io/e2e-test-images/jessie-dnsutils:1.3" ]; then
     echo "Validation PASSED: Container image in dns-rs-cka is correct."
 else
     echo "Validation FAILED: Container image in dns-rs-cka is incorrect."
@@ -37,7 +40,7 @@ fi
 
 # Check if the command is set to 'sleep 3600'
 command=$(kubectl get pod -n dns-ns -o=jsonpath='{.items[0].spec.containers[0].command[0]}')
-if [ "$command" == "sleep" ]; then
+if [ "$command" = "sleep" ]; then
     echo "Validation PASSED: Command in dns-rs-cka is set to 'sleep 3600'."
 else
     echo "Validation FAILED: Command in dns-rs-cka is not set to 'sleep 3600'."
@@ -55,7 +58,7 @@ compare_files() {
     fi
 }
 
-POD_NAME=$(kubectl get pods -n dns-ns -o jsonpath='{.items[0].metadata.name}')
+
 kubectl exec -n dns-ns -i -t $POD_NAME -- nslookup kubernetes.default > dns-pod-test.txt
 
 compare_files "dns-output.txt" "dns-pod-test.txt"
