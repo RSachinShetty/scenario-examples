@@ -3,7 +3,8 @@
     "description": "Weight: 2",
     "details": {
       "intro": {
-        "text": "intro.md"
+        "text": "intro.md",
+        "background": "background.sh"
       },
       "steps": [
         {
