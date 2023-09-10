@@ -60,6 +60,6 @@ kubectl exec -n dns-ns -i -t $POD_NAME -- nslookup kubernetes.default > dns-pod-
 
 compare_files "dns-output.txt" "dns-pod-test.txt"
 
-rm -f dns-pod-test.txt #dns-pod-test-extracted.txt
+#rm -f dns-pod-test.txt #dns-pod-test-extracted.txt
 
 echo "Validation PASSED"
