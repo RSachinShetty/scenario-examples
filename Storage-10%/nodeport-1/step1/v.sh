@@ -17,6 +17,15 @@ else
     exit 1
 fi
 
+# Check if the deployment uses the correct Docker image
+deployment_image=$(kubectl get deployment my-web-app-deployment -o=jsonpath='{.spec.template.spec.containers[0].image}')
+if [ "$deployment_image" == "wordpress" ]; then
+    echo "Validation PASSED: Deployment my-web-app-deployment uses the correct Docker image."
+else
+    echo "Validation FAILED: Deployment my-web-app-deployment does not use the correct Docker image."
+    exit 1
+fi
+
 # Check if the service exists
 if kubectl get svc my-web-app-service &> /dev/null; then
     echo "Validation PASSED: Service my-web-app-service exists."
