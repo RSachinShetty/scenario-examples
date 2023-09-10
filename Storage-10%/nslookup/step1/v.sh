@@ -1,5 +1,17 @@
 #!/bin/bash
 
+# Function to compare two files
+compare_files() {
+    local file1="$1"
+    local file2="$2"
+    if cmp -s "$file1" "$file2"; then
+        echo "Validation PASSED: DNS resolution matches expected output."
+    else
+        echo "Validation FAILED: DNS resolution does not match expected output."
+        exit 1
+    fi
+}
+
 # Check if nginx-pod-cka exists
 if kubectl get pod nginx-pod-cka &> /dev/null; then
     echo "Validation PASSED: nginx-pod-cka exists."
@@ -17,19 +29,11 @@ else
 fi
 
 # Perform nslookup for nginx-service-cka and store the output in nginx-service-test.txt
-kubectl run test-nslookup-service --image=busybox --rm -it --restart=Never -- nslookup nginx-service-cka.default.svc.cluster.local > nginx-service-test.txt
+kubectl run test-nslookup --image=busybox:1.28 --rm -it --restart=Never -- nslookup nginx-service-cka > "nginx-service-test.txt"
 
-# Extract relevant lines from the test outputs
-grep -E 'Server:|Address:|Name:' nginx-service-test.txt > nginx-service-test-extracted.txt
-grep -E 'Server:|Address:|Name:' nginx-service.txt > nginx-service-extracted.txt
-
-# Compare the extracted files
-if diff -q nginx-service-test-extracted.txt nginx-service-extracted.txt &> /dev/null; then
-    echo "Validation PASSED: DNS resolution matches expected output for both pod and service."
-else
-    echo "Validation FAILED: DNS resolution does not match expected output for either pod or service."
-    exit 1
-fi
+#compare_files "nginx-service-extracted.txt"
+compare_files "nginx-service.txt" "nginx-service-test.txt"
 
 # Clean up temporary files
-rm -f nginx-service-test.txt nginx-service-test-extracted.txt
+rm -f nginx-service-test.txt
+

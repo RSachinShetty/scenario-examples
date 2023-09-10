@@ -44,19 +44,22 @@ else
     exit 1
 fi
 
+compare_files() {
+    local file1="$1"
+    local file2="$2"
+    if cmp -s "$file1" "$file2"; then
+        echo "Validation PASSED: DNS resolution matches expected output."
+    else
+        echo "Validation FAILED: DNS resolution does not match expected output."
+        exit 1
+    fi
+}
+
 POD_NAME=$(kubectl get pods -n dns-ns -o jsonpath='{.items[0].metadata.name}')
-kubectl exec -n dns-ns -i -t $POD_NAME -- nslookup kubernetes.default > dns-pod-test.txt 
+kubectl exec -n dns-ns -i -t $POD_NAME -- nslookup kubernetes.default > dns-pod-test.txt
 
-#grep -E 'Server:|Address:|Name:' dns-pod-test.txt > dns-pod-test-extracted.txt
-#grep -E 'Server:|Address:|Name:' dns-output.txt > dns-pod-extracted.txt
-
-if diff -q dns-output.txt dns-pod-test.txt &> /dev/null; then
-    echo "Validation PASSED: DNS resolution matches expected output for pod."
-else
-    echo "Validation FAILED: DNS resolution does not match expected output for pod."
-    exit 1
-fi
+compare_files "dns-output.txt" "dns-pod-test.txt"
 
 rm -f dns-pod-test.txt #dns-pod-test-extracted.txt
 
-echo "Validation PASSED: All criteria for dns-rs-cka are met."
+echo "Validation PASSED"
