@@ -35,6 +35,6 @@ if [ "$resource_limits" == "50Mi" ] && [ "$resource_requests" == "50Mi" ]; then
 else
     echo "Validation FAILED: Pod my-pod does not have the correct resource limits and requests."
     exit 1
-fi
+fi 
 
 echo "Validation PASSED"
