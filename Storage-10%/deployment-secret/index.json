@@ -1,10 +1,9 @@
 {
-    "title": "Rollback",
-    "description": "Weight: 6",
+    "title": "Deployment, Secret",
+    "description": "Weight: 8",
     "details": {
       "intro": {
-        "text": "intro.md",
-        "background": "background.sh"
+        "text": "intro.md"
       },
       "steps": [
         {
