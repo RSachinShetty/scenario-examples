@@ -8,6 +8,6 @@ For this question, please set this context (In exam, diff cluster name)
 <br>
 
 
-Fresher deployed a pod named `my-pod`. However, while specifying the resource limits, they mistakenly used `Gebibyte` as the unit instead of `Mebibyte`
+Fresher deployed a pod named `my-pod`. However, while specifying the resource limits, they mistakenly given `100Mi` storage limit  instead of `50Mi`
 
-* node doesn't have sufficient resources, So change it to `Mebibyte` only.
+* node doesn't have sufficient resources, So change it to `50Mi` only.

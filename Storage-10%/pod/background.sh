@@ -11,7 +11,7 @@ spec:
     image: nginx:latest
     resources:
       requests:
-        memory: "5Gi"
+        memory: "50Mi"
       limits:
-        memory: "10Gi"
+        memory: "100Mi"
 EOF
