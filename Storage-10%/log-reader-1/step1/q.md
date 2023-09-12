@@ -8,4 +8,4 @@ For this question, please set this context (In exam, diff cluster name)
 <br>
 
 
-`log-reader-pod` pod is running, save All pod logs in `podalllogs.txt`
+`alpine-reader-pod` pod is running, save All INFO and ERROR's pod logs in `podlogs.txt`

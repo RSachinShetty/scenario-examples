@@ -8,4 +8,4 @@ For this question, please set this context (In exam, diff cluster name)
 <br>
 
 
-`log-reader-pod` pod is running, save All pod logs in `podalllogs.txt`
+Create a Kubernetes Secret named `database-app-secret` in the default namespace using the contents of the file `database-data.txt`

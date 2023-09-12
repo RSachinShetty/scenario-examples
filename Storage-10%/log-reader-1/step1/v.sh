@@ -11,7 +11,7 @@ INFO: Mon Oct 1 10:30:23 UTC 2023 Logged In
 ERROR: Mon Oct 1 10:30:23 UTC 2023  Log in Error!"
 
 # Read the content of allpod.txt
-ACTUAL_CONTENT=$(cat podalllogs.txt)
+ACTUAL_CONTENT=$(cat allpod.txt)
 
 # Compare the actual content with the expected content
 if [ "$EXPECTED_CONTENT" = "$ACTUAL_CONTENT" ]; then
