@@ -1,5 +1,5 @@
 
-> <strong>Useful Resources</strong>: [Persistent Volumes](https://kubernetes.io/docs/concepts/storage/persistent-volumes/)
+> <strong>Useful Resources</strong>: [Cluster Upgrade](https://kubernetes.io/docs/tasks/administer-cluster/kubeadm/kubeadm-upgrade/)
 
 For this question, please set this context (In exam, diff cluster name)
 
