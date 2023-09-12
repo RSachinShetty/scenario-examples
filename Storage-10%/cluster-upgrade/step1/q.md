@@ -48,4 +48,4 @@ AFTER UPGRADE: ( `v1.27.2` )
 
 ![Scan results](./a.png)
 
-Similarly verify upgradation for current verion. ( `v1.27.1` to `v1.27.2` )
+Similarly verify upgradation for current verion. ( ex:- `v1.27.1` to `v1.27.2` )
