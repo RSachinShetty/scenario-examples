@@ -1,0 +1,21 @@
+{
+    "title": "Cluster Upgrade",
+    "description": "Weight: 10",
+    "details": {
+      "intro": {
+        "text": "intro.md"
+      }, 
+      "steps": [
+        {
+          "title": "Services & Networking",
+          "text": "step1/q.md"
+        }
+      ],
+      "finish": {
+        "text": "finish.md"
+      }
+    },
+    "backend": {
+      "imageid": "kubernetes-kubeadm-2nodes"
+    }
+}
