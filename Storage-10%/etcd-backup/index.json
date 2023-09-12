@@ -1,0 +1,22 @@
+{
+    "title": "ETCD Backup",
+    "description": "Weight: 8",
+    "details": {
+      "intro": {
+        "text": "intro.md"
+      },
+      "steps": [
+        {
+          "title": "Storage",
+          "text": "step1/q.md",
+          "verify": "step1/v.sh"
+        }
+      ],
+      "finish": {
+        "text": "finish.md"
+      }
+    },
+    "backend": {
+      "imageid": "kubernetes-kubeadm-2nodes"
+    }
+}
