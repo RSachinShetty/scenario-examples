@@ -8,4 +8,6 @@ For this question, please set this context (In exam, diff cluster name)
 <br>
 
 
-The deployment named `video-app` has experienced multiple rolling updates and rollbacks. Your task is to total revision of this deployment and record the image name used in `3rd` revision to file `app-file.txt` in this format `REVISION_TOTAL_COUNT,IMAGE_NAME`.
+`product` pod is running. when you access logs of this pod, it displays the output `Mi Tv Is Good`
+
+Please update the pod definition file to utilize an environment variable with the value `Sony Tv Is Good` Then, recreate this pod with the modified configuration.

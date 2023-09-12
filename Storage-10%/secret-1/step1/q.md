@@ -8,4 +8,4 @@ For this question, please set this context (In exam, diff cluster name)
 <br>
 
 
-The deployment named `video-app` has experienced multiple rolling updates and rollbacks. Your task is to total revision of this deployment and record the image name used in `3rd` revision to file `app-file.txt` in this format `REVISION_TOTAL_COUNT,IMAGE_NAME`.
+Create a Kubernetes Secret named `database-app-secret` in the default namespace using the contents of the file `database-data.txt`

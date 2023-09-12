@@ -8,4 +8,4 @@ For this question, please set this context (In exam, diff cluster name)
 <br>
 
 
-The deployment named `video-app` has experienced multiple rolling updates and rollbacks. Your task is to total revision of this deployment and record the image name used in `3rd` revision to file `app-file.txt` in this format `REVISION_TOTAL_COUNT,IMAGE_NAME`.
+Find the Node that consumes the most MEMORY in all cluster(currently we have single cluster). Then, store the result in the file `high_memory_node.txt` with the following format: `cluster_name,node_name`.
