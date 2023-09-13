@@ -8,4 +8,4 @@ For this question, please set this context (In exam, diff cluster name)
 <br>
 
 
-`node01` is in `NotReady` state, fix this issue
+`kubelet` service not running in `controlplane`, it will cause the `controlplane` in `NotReady` state, so fix this issue

@@ -1,10 +1,11 @@
 #!/bin/bash
 
-node_status=$(kubectl get nodes node01 -o jsonpath='{.metadata.name} {.status.conditions[?(@.type=="Ready")].status}' | awk '{print $2}' | sed 's/True/Ready/;s/Unknown/NotReady/')
+# Check the status of kubelet.service
+kubelet_status=$(systemctl is-active kubelet.service)
 
-if [ "$node_status" == "Ready" ]; then
-  echo "node01 is in ready state"
+if [ "$kubelet_status" == "active" ]; then
+  echo "kubelet.service is running."
 else
-  echo "node01 is in not ready state"
-  exit
+  echo "kubelet.service is not running."
+  exit 1
 fi
