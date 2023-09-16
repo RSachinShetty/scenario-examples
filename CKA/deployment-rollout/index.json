@@ -1,13 +1,13 @@
 {
-    "title": "Deployment, Rollout",
-    "description": "Weight: 8",
+    "title": "Workloads & Scheduling",
+    "description": "Deployment, Rollout",
     "details": {
       "intro": {
         "text": "intro.md"
       },
       "steps": [
         {
-          "title": "Services & Networking",
+          "title": "Weight: 8",
           "text": "step1/q.md",
           "verify": "step1/v.sh"
         }

@@ -1,6 +1,6 @@
 {
-    "title": "Pod Issue - 5",
-    "description": "Weight: 5",
+    "title": "Troubleshooting",
+    "description": "Pod Issue - 5",
     "details": {
       "intro": {
         "text": "intro.md",
@@ -8,7 +8,7 @@
       },
       "steps": [
         {
-          "title": "Services & Networking",
+          "title": "Weight: 5",
           "text": "step1/q.md",
           "verify": "step1/v.sh"
         }

@@ -1,6 +1,6 @@
 {
-    "title": "Deployment Issue",
-    "description": "Weight: 5",
+    "title": "Workloads & Scheduling",
+    "description": "Deployment Issue",
     "details": {
       "intro": {
         "text": "intro.md",
@@ -8,7 +8,7 @@
       },
       "steps": [
         {
-          "title": "Services & Networking",
+          "title": "Weight: 5",
           "text": "step1/q.md",
           "verify": "step1/v.sh"
         }

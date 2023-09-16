@@ -1,6 +1,6 @@
 {
-    "title": "Persistent Volume, Persistent Volume Claim - Issue",
-    "description": "Weight: 4",
+    "title": "Troubleshooting",
+    "description": "Persistent Volume, Persistent Volume Claim - Issue",
     "details": {
       "intro": {
         "text": "intro.md",
@@ -8,7 +8,7 @@
       },
       "steps": [
         {
-          "title": "Storage",
+          "title": "Weight: 4",
           "text": "step1/q.md",
           "verify": "step1/v.sh"
         }

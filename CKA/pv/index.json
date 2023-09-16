@@ -1,13 +1,13 @@
 {
-    "title": "Persistent Volume",
-    "description": "Weight: 1",
+    "title": "Storage",
+    "description": "Persistent Volume",
     "details": {
       "intro": {
         "text": "intro.md"
       },
       "steps": [
         {
-          "title": "Storage",
+          "title": "Weight: 1",
           "text": "step1/q.md",
           "verify": "step1/v.sh"
         }

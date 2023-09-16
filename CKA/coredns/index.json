@@ -1,6 +1,6 @@
 {
-    "title": "coredns",
-    "description": "Weight: 2",
+    "title": "Services & Networking",
+    "description": "coredns",
     "details": {
       "intro": {
         "text": "intro.md",
@@ -8,7 +8,7 @@
       },
       "steps": [
         {
-          "title": "Services & Networking",
+          "title": "Weight: 2",
           "text": "step1/q.md",
           "verify": "step1/v.sh"
         }

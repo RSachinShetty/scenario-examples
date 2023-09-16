@@ -1,13 +1,13 @@
 {
-    "title": "Cluster Upgrade",
-    "description": "Weight: 10",
+    "title": "Architecture, Installation & Maintenance",
+    "description": "Cluster Upgrade",
     "details": {
       "intro": {
         "text": "intro.md"
       }, 
       "steps": [
         {
-          "title": "Services & Networking",
+          "title": "Weight: 10",
           "text": "step1/q.md"
         }
       ],

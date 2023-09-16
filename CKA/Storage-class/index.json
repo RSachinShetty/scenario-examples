@@ -1,13 +1,13 @@
 {
-    "title": "Storage Class",
-    "description": "Weight: 2",
+    "title": "Storage",
+    "description": "Storage Class",
     "details": {
       "intro": {
         "text": "intro.md"
       },
       "steps": [
         {
-          "title": "Storage",
+          "title": "Weight: 2",
           "text": "step1/q.md",
           "verify": "step1/v.sh"
         }

@@ -1,13 +1,13 @@
 {
-    "title": "nslookup",
-    "description": "Weight: 4",
+    "title": "Services & Networking",
+    "description": "nslookup",
     "details": {
       "intro": {
         "text": "intro.md"
       },
       "steps": [
         {
-          "title": "Services & Networking",
+          "title": "Weight: 4",
           "text": "step1/q.md",
           "verify": "step1/v.sh"
         }

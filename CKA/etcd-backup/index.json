@@ -1,13 +1,13 @@
 {
-    "title": "ETCD Backup",
-    "description": "Weight: 8",
+    "title": "Services & Networking",
+    "description": "ETCD Backup",
     "details": {
       "intro": {
         "text": "intro.md"
       },
       "steps": [
         {
-          "title": "Storage",
+          "title": "Weight: 8",
           "text": "step1/q.md",
           "verify": "step1/v.sh"
         }

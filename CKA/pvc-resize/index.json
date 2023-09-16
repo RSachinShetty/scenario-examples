@@ -1,6 +1,6 @@
 {
-    "title": "Persistent Volume Claim Resize",
-    "description": "Weight: 6",
+    "title": "Storage",
+    "description": "Persistent Volume Claim Resize",
     "details": {
       "intro": {
         "text": "intro.md",
@@ -8,7 +8,7 @@
       },
       "steps": [
         {
-          "title": "Storage",
+          "title": "Weight: 6",
           "text": "step1/q.md",
           "verify": "step1/v.sh"
         }

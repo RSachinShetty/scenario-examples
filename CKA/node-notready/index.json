@@ -1,6 +1,6 @@
 {
-    "title": "Node Not Ready",
-    "description": "Weight: 4",
+    "title": "Troubleshooting",
+    "description": "Node Not Ready",
     "details": {
       "intro": {
         "text": "intro.md",
@@ -8,7 +8,7 @@
       },
       "steps": [
         {
-          "title": "Services & Networking",
+          "title": "Weight: 4",
           "text": "step1/q.md",
           "verify": "step1/v.sh"
         }

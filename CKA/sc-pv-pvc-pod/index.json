@@ -1,13 +1,13 @@
 {
-    "title": "Storage Class, Persistent Volume, Persistent Volume Claim, Pod",
-    "description": "Weight: 10",
+    "title": "Storage",
+    "description": "Storage Class, Persistent Volume, Persistent Volume Claim, Pod",
     "details": {
       "intro": {
         "text": "intro.md"
       },
       "steps": [
         {
-          "title": "Storage",
+          "title": "Weight: 10",
           "text": "step1/q.md",
           "verify": "step1/v.sh"
         }
