@@ -2,4 +2,4 @@
 
 ### WELL DONE !
 
-You solved this ARCHITECTURE, INSTALL AND MAINTENANCE Challenges!
+You solved this Architecture, Installation & Maintenance Challenges!
