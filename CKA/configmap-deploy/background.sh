@@ -22,5 +22,5 @@ spec:
         - containerPort: 80
         env:
         - name: APPLICATION
-          value: web
+          value: web-app
 EOF
