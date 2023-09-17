@@ -8,4 +8,4 @@ For this question, please set this context (In exam, diff cluster name)
 <br>
 
 
-Create a Kubernetes Secret named `database-app-secret` in the default namespace using the contents of the file `database-data.txt`
+Decode the contents of the existing secret named `database-data` in the `database-ns` namespace and save the decoded content into a file located at `decoded.txt` 
