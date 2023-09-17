@@ -1,8 +1,0 @@
-      spec:
-        containers:
-        - name: webapp-container
-          image: nginx:latest
-          env:
-          - name: APPLICATION
-            value: web
-          
