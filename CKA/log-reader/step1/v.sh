@@ -16,7 +16,6 @@ ACTUAL_CONTENT=$(cat podalllogs.txt)
 # Compare the actual content with the expected content
 if [ "$EXPECTED_CONTENT" = "$ACTUAL_CONTENT" ]; then
   echo "Validation passed: The content in allpod.txt matches the expected pattern."
-  exit 0
 else
   echo "Validation failed: The content in allpod.txt does not match the expected pattern."
   exit 1
