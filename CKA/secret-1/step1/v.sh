@@ -2,7 +2,7 @@
 
 # Define the expected string
 expected_string="secret"
-
+ 
 # Read the contents of the decoded.txt file
 file_contents=$(cat decoded.txt)
 

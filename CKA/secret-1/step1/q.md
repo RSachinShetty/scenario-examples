@@ -8,4 +8,4 @@ For this question, please set this context (In exam, diff cluster name)
 <br>
 
 
-Decode the contents of the existing secret named `database-data` in the `database-ns` namespace and save the decoded content into a file located at `decoded.txt` 
+Decode the contents of the existing secret named `database-data` in the `database-ns` namespace and save the decoded content into a file located at `decoded.txt`  

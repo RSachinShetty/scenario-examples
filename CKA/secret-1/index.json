@@ -7,7 +7,7 @@
         "background": "background.sh"
       },
       "steps": [
-        {
+        { 
           "title": "Weight: 1",
           "text": "step1/q.md",
           "verify": "step1/v.sh"
