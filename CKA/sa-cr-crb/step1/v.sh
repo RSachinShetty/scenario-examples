@@ -1,5 +1,5 @@
 #!/bin/bash
-
+ 
 # Validate Service Account
 sa_exists=$(kubectl get serviceaccount group1-sa -n default -o custom-columns=:.metadata.name --no-headers)
 if [ "$sa_exists" != "group1-sa" ]; then
