@@ -6,16 +6,16 @@ kind: Deployment
 metadata:
   name: my-app-deployment
   labels:
-    app: my-app
+    app: trusted
 spec:
   replicas: 2
   selector:
     matchLabels:
-      app: my-app
+      app: trusted
   template:
     metadata:
       labels:
-        app: my-app
+        app: trusted
     spec:
       containers:
         - name: my-app-container
@@ -27,7 +27,7 @@ metadata:
   name: my-app-service
 spec:
   selector:
-    app: my-app
+    app: trusted
   ports:
     - protocol: TCP
       port: 80
