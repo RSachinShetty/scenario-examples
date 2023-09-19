@@ -2,4 +2,4 @@
 
 ### WELL DONE !
 
-You solved this Services & Networking Challenges!
+You solved this Architecture, Installation & Maintenance Challenges!
