@@ -23,8 +23,10 @@ else
     exit 1
 fi
 
+validation_string_1='"msg":"saved","path":"/opt/cluster_backup.db"'
+
 # Check if the validation string exists in the 'backup.txt' file
-if grep -q '"msg":"saved","path":"/opt/cluster1_backup.db"' "backup.txt"; then
+if grep -q "$validation_string_1" "backup.txt"; then
     echo "Validation passed: 'backup.txt' contains the expected string."
 else
     echo "Validation failed: 'backup.txt' does not contain the expected string."
