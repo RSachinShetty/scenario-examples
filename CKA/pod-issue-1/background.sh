@@ -8,11 +8,11 @@ metadata:
 spec:
   volumes:
     - name: log-volume
-      emptyDir:
+      emptyDir: {}
   containers:
     - name: nginx-container
       image: nginx:ltest
       volumeMounts:
-        - name: log-volume
+        - name: log-volumes
           mountPath: /var/log/nginx
 EOF
