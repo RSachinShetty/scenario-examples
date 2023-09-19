@@ -8,7 +8,7 @@
       },
       "steps": [
         {
-          "title": "Weight: 2",
+          "title": "Weight: 4",
           "text": "step1/q.md",
           "verify": "step1/v.sh"
         }
