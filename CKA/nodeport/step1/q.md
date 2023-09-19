@@ -1,5 +1,5 @@
 
-> <strong>Useful Resources</strong>: [Persistent Volumes](https://kubernetes.io/docs/concepts/storage/persistent-volumes/)
+> <strong>Useful Resources</strong>: [Service](https://kubernetes.io/docs/concepts/services-networking/service/)
 
 For this question, please set this context (In exam, diff cluster name)
 
@@ -7,8 +7,7 @@ For this question, please set this context (In exam, diff cluster name)
 
 <br>
 
-Create a NodePort service named `app-service-cka` with port `31000` to expose the `nginx-app-cka` deployment in the `nginx-app-space` namespace.
-
-
-
-
+Create a NodePort service named `app-service-cka` (with below specification) to expose the `nginx-app-cka` deployment in the `nginx-app-space` namespace.
+* port & target port `80`
+* protocol `TCP` 
+* node port `31000` 

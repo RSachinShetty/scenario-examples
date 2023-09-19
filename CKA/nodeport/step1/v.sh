@@ -1,44 +1,55 @@
 #!/bin/bash
 
-# Namespace and deployment name
+# Service Name and Namespace
+service_name="app-service-cka"
 namespace="nginx-app-space"
-deployment_name="nginx-app-cka"
 
-# Verify the Service Configuration
-kubectl get svc -n $namespace nginx-service-cka -o jsonpath="{.spec.ports[0].port}" | grep -q 8080
-if [ $? -eq 0 ]; then
-    echo "Service exposed on port 8080"
+# Validate Service Name
+if kubectl get svc "$service_name" -n "$namespace" &> /dev/null; then
+  echo "Service $service_name exists in namespace $namespace."
 else
-    echo "Service not exposed on port 8080"
-    exit 1  # Exit with a non-zero status code to indicate failure
+  echo "Service $service_name does not exist in namespace $namespace."
+  exit 1
 fi
 
-# Verify the Service Type
-kubectl get svc -n $namespace nginx-service-cka -o jsonpath="{.spec.type}" | grep -q NodePort
-if [ $? -eq 0 ]; then
-    echo "Service type is NodePort"
+# Validate Port
+expected_port="80"
+actual_port=$(kubectl get svc "$service_name" -n "$namespace" -o=jsonpath="{.spec.ports[0].port}")
+if [ "$actual_port" = "$expected_port" ]; then
+  echo "Port is correctly set to $expected_port."
 else
-    echo "Service type is not NodePort"
-    exit 1
+  echo "Port is not set to $expected_port (Current: $actual_port)."
+  exit 1
 fi
 
-# Verify the Service Name
-kubectl get svc -n $namespace nginx-service-cka -o jsonpath="{.metadata.name}" | grep -q nginx-service-cka
-if [ $? -eq 0 ]; then
-    echo "Service name is nginx-service-cka"
+# Validate Protocol
+expected_protocol="TCP"
+actual_protocol=$(kubectl get svc "$service_name" -n "$namespace" -o=jsonpath="{.spec.ports[0].protocol}")
+if [ "$actual_protocol" = "$expected_protocol" ]; then
+  echo "Protocol is correctly set to $expected_protocol."
 else
-    echo "Service name is not nginx-service-cka"
-    exit 1
+  echo "Protocol is not set to $expected_protocol (Current: $actual_protocol)."
+  exit 1
 fi
 
-# Verify the Service Selector
-kubectl get svc -n $namespace nginx-service-cka -o jsonpath="{.spec.selector.app}" | grep -q nginx-app-cka
-if [ $? -eq 0 ]; then
-    echo "Service selector matches deployment app label"
+# Validate TargetPort
+expected_target_port="80"
+actual_target_port=$(kubectl get svc "$service_name" -n "$namespace" -o=jsonpath="{.spec.ports[0].targetPort}")
+if [ "$actual_target_port" = "$expected_target_port" ]; then
+  echo "TargetPort is correctly set to $expected_target_port."
 else
-    echo "Service selector does not match deployment app label"
-    exit 1
+  echo "TargetPort is not set to $expected_target_port (Current: $actual_target_port)."
+  exit 1
 fi
 
-# If all checks pass, exit with a success status code
-exit 0
+# Validate NodePort
+expected_node_port="31000"
+actual_node_port=$(kubectl get svc "$service_name" -n "$namespace" -o=jsonpath="{.spec.ports[0].nodePort}")
+if [ "$actual_node_port" = "$expected_node_port" ]; then
+  echo "NodePort is correctly set to $expected_node_port."
+else
+  echo "NodePort is not set to $expected_node_port (Current: $actual_node_port)."
+  exit 1
+fi
+
+echo "Validation Passed!"
