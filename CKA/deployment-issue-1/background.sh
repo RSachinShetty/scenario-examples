@@ -50,5 +50,5 @@ spec:
       volumes:
         - name: nginx-config
           configMap:
-            name: nginx-configmap
+            name: nginx-configuration
 EOF

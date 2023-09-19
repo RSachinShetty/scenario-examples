@@ -13,6 +13,6 @@ spec:
     - name: nginx-container
       image: nginx:ltest
       volumeMounts:
-        - name: log-volumes
+        - name: log-volume
           mountPath: /var/log/nginx
 EOF
