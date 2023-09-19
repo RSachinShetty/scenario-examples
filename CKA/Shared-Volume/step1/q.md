@@ -7,7 +7,7 @@ For this question, please set this context (In exam, diff cluster name)
 
 <br>
 
-- An existing nginx pod, `my-pod-cka` and Persistent Volume Claim (PVC) named `my-pvc-cka` are available. Your task is to implement the following modifications:
+An existing nginx pod, `my-pod-cka` and Persistent Volume Claim (PVC) named `my-pvc-cka` are available. Your task is to implement the following modifications:
 - NOTE:- PVC to PV binding and `my-pod-cka` pods sometimes takes around 2Mins to Up & Running So Please wait
 
 * Update the pod to include a sidecar container that uses the `busybox` image. Ensure that this sidecar container remains operational by including an appropriate command `"tail -f /dev/null"`.
