@@ -1,5 +1,3 @@
 #!/bin/bash
 
-kubectl create deployment nginx-deployment --image=nginx
-
-kubectl expose deployment nginx-deployment --port=80 --type=ClusterIP
+ETCDCTL_API=3 etcdctl --endpoints=https://127.0.0.1:2379 --cacert=/etc/kubernetes/pki/etcd/ca.crt --cert=/etc/kubernetes/pki/etcd/server.crt --key=/etc/kubernetes/pki/etcd/server.key snapshot save /opt/cluster_backup.db

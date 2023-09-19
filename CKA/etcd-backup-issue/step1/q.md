@@ -1,5 +1,5 @@
 
-> <strong>Useful Resources</strong>: [Persistent Volumes & Claim](https://kubernetes.io/docs/concepts/storage/persistent-volumes/)
+> <strong>Useful Resources</strong>: [ETCD](https://kubernetes.io/docs/tasks/administer-cluster/configure-upgrade-etcd/)
 
 For this question, please set this context (In exam, diff cluster name)
 
