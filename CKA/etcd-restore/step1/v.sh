@@ -10,11 +10,14 @@ if [ ! -f "$backup_file" ]; then
     exit 1  # Exit with failure status code
 fi
 
-# Check if the file exists
-if [ ! -f "$db_file" ]; then
-    echo "Restore file '$db_file' does not exist."
+# Use test -e to check if the file exists
+if test -e "$db_file"; then
+    echo "File '$db_file' exists."
+else
+    echo "File '$db_file' does not exist."
     exit 1  # Exit with failure status code
 fi
+
 
 # Check if the file 'restore.txt' exists
 if [ ! -f "restore.txt" ]; then
