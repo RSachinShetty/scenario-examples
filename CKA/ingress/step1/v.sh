@@ -10,7 +10,7 @@ fi
 
 # Check if the Ingress resource has the correct annotations
 ssl_redirect=$(kubectl get ingress nginx-ingress-resource -o jsonpath='{.metadata.annotations.nginx\.ingress\.kubernetes\.io/ssl-redirect}')
-if [ "$ssl_redirect" == "false" ]; then
+if [ "$ssl_redirect" = "false" ]; then
     echo "Validation PASSED: Ingress resource has the correct ssl-redirect annotation."
 else
     echo "Validation FAILED: Ingress resource does not have the correct ssl-redirect annotation."
@@ -23,7 +23,7 @@ path=$(kubectl get ingress nginx-ingress-resource -o jsonpath='{.spec.rules[0].h
 backend_service_name=$(kubectl get ingress nginx-ingress-resource -o jsonpath='{.spec.rules[0].http.paths[0].backend.service.name}')
 backend_service_port=$(kubectl get ingress nginx-ingress-resource -o jsonpath='{.spec.rules[0].http.paths[0].backend.service.port.number}')
 
-if [ "$path_type" == "Prefix" ] && [ "$path" == "/shop" ] && [ "$backend_service_name" == "nginx-service-cka04-svcn" ] && [ "$backend_service_port" == "80" ]; then
+if [ "$path_type" = "Prefix" ] && [ "$path" = "/shop" ] && [ "$backend_service_name" = "nginx-service" ] && [ "$backend_service_port" = "80" ]; then
     echo "Validation PASSED: Ingress resource has the correct pathType, path, backend service name, and port."
 else
     echo "Validation FAILED: Ingress resource does not have the correct pathType, path, backend service name, or port."
