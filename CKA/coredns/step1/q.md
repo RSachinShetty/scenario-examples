@@ -1,5 +1,6 @@
 
-> <strong>Useful Resources</strong>: [Persistent Volumes](https://kubernetes.io/docs/concepts/storage/persistent-volumes/)
+> <strong>Useful Resources</strong>: 
+[Namespaces](https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/) , [Deployment](https://kubernetes.io/docs/concepts/workloads/controllers/deployment/) , [Service](https://kubernetes.io/docs/concepts/services-networking/service/)
 
 For this question, please set this context (In exam, diff cluster name)
 
