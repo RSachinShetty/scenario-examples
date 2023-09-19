@@ -3,8 +3,7 @@
     "description": "coredns - 1",
     "details": {
       "intro": {
-        "text": "intro.md",
-        "background": "background.sh"
+        "text": "intro.md"
       },
       "steps": [
         {
