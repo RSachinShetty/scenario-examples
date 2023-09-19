@@ -2,4 +2,4 @@
 
 kubectl create deployment nginx-deployment --image=nginx
 
-kubectl expose deployment nginx-deployment --port=80 --type=ClusterIP
+kubectl expose deployment nginx-service --port=80 --type=ClusterIP
