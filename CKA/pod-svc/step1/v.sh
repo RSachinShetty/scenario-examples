@@ -12,7 +12,7 @@ response=$(curl -s http://localhost:8080)
 # Check if the response matches the expected output
 expected_output="<html><body><h1>It works!</h1></body></html>"
  
-if [ "$response" == "$expected_output" ]; then
+if [ "$response" = "$expected_output" ]; then
   echo "Verification successful: Web application is accessible."
 else
   echo "Verification failed: Web application is not accessible as expected."
