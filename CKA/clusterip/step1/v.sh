@@ -31,7 +31,7 @@ fi
 
 # Check if Service type is ClusterIP
 service_type=$(kubectl get service "$service_name" -o=jsonpath='{.spec.type}')
-if [ "$service_type" == "ClusterIP" ]; then
+if [ "$service_type" = "ClusterIP" ]; then
   echo "Service $service_name is of type ClusterIP."
 else
   echo "Service $service_name is not of type ClusterIP (Current: $service_type)."
@@ -46,8 +46,17 @@ pod_ips=$(kubectl get pods -o jsonpath="{.items[*].status.podIP}" | tr ' ' '\n' 
 # Read the IP addresses from the stored file
 stored_ips=$(tail -n +2 "$pod_ips_file" | sort -n)
 
+# Check if the first line of the file is "IP_ADDRESS"
+first_line=$(head -n 1 "$pod_ips_file")
+if [ "$first_line" = "IP_ADDRESS" ]; then
+  echo "Validation PASSED: First line of $pod_ips_file is 'IP_ADDRESS'."
+else
+  echo "Validation FAILED: First line of $pod_ips_file is not 'IP_ADDRESS'."
+  exit 1
+fi
+
 # Compare the fetched IPs with the stored IPs
-if [ "$pod_ips" == "$stored_ips" ]; then
+if [ "$pod_ips" = "$stored_ips" ]; then
     echo "Validation PASSED: IP addresses match the stored IPs."
     exit 0
 else
