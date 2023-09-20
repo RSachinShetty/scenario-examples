@@ -7,6 +7,6 @@ For this question, please set this context (In exam, diff cluster name)
 
 <br>
 
-`postgres-pod` pod is not running, fix that issue
+`postgres-pod.yaml` is there, currently not able to deploy pod. check and fix that issue
 
 Note: Don't remove any specification in `postgres-pod`

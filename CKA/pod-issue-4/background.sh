@@ -1,6 +1,6 @@
 #!/bin/bash
 
-kubectl apply -f - <<EOF
+cat <<EOL > postgres-pod.yaml
 apiVersion: v1
 kind: Pod
 metadata:
@@ -34,4 +34,4 @@ spec:
             - "SELECT 1"
         initialDelaySeconds: 5
         periodSeconds: 5
-EOF
+EOL
