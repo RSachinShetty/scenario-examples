@@ -1,6 +1,6 @@
 #!/bin/bash
 
-kubectl apply -f - <<EOF
+cat <<EOL > postgres-deployment.yaml
 apiVersion: apps/v1
 kind: Deployment
 metadata:
@@ -33,9 +33,9 @@ spec:
                   key: db_password
           ports:
             - containerPort: 5432
+EOL
 
----
-
+kubectl apply -f - <<EOF
 apiVersion: v1
 kind: Secret
 metadata:

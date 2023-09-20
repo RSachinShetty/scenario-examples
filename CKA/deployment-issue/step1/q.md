@@ -7,5 +7,6 @@ For this question, please set this context (In exam, diff cluster name)
 
 <br>
 
+`postgres-deployment.yaml` template is there, now we can't create object due to some issue in that, check and fix the issue
 
-`postgres-deployment` deployment is not running, fix the issue
+Note: Don't remove any specification
