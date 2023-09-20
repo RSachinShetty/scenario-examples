@@ -1,6 +1,6 @@
 #!/bin/bash
 
-kubectl label nodes controlplane NodeName=controlplane
+kubectl label nodes node01 NodeName=frontendnodes
 
 kubectl apply -f - <<EOF
 apiVersion: v1
@@ -19,5 +19,5 @@ spec:
               - key: NodeName
                 operator: In
                 values:
-                  - controlplaneName
+                  - frontend
 EOF
