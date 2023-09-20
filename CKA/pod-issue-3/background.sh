@@ -1,5 +1,7 @@
 #!/bin/bash
 
+kubectl label nodes controlplane NodeName=controlplaneName
+
 kubectl apply -f - <<EOF
 apiVersion: v1
 kind: Pod
