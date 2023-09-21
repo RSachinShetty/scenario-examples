@@ -1,5 +1,5 @@
 
-> <strong>Useful Resources</strong>: [Persistent Volumes](https://kubernetes.io/docs/concepts/storage/persistent-volumes/)
+> <strong>Useful Resources</strong>: [Pods](https://kubernetes.io/docs/concepts/workloads/pods/) , [CronJob](https://kubernetes.io/docs/concepts/workloads/controllers/cron-jobs/)
 
 For this question, please set this context (In exam, diff cluster name)
 

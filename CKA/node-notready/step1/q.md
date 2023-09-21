@@ -1,5 +1,5 @@
 
-> <strong>Useful Resources</strong>: [Persistent Volumes](https://kubernetes.io/docs/concepts/storage/persistent-volumes/)
+> <strong>Useful Resources</strong>: [kubelet](https://kubernetes.io/docs/reference/command-line-tools-reference/kubelet/)
 
 For this question, please set this context (In exam, diff cluster name)
 

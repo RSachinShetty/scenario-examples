@@ -1,5 +1,5 @@
 
-> <strong>Useful Resources</strong>: [ETCD](https://kubernetes.io/docs/tasks/administer-cluster/configure-upgrade-etcd/)
+> <strong>Useful Resources</strong>: [kubelet](https://kubernetes.io/docs/reference/command-line-tools-reference/kubelet/) , [ETCD](https://kubernetes.io/docs/tasks/administer-cluster/configure-upgrade-etcd/)
 
 For this question, please set this context (In exam, diff cluster name)
 

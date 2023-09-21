@@ -1,5 +1,5 @@
 
-> <strong>Useful Resources</strong>: [Persistent Volumes](https://kubernetes.io/docs/concepts/storage/persistent-volumes/)
+> <strong>Useful Resources</strong>: [Network Policies](https://kubernetes.io/docs/concepts/services-networking/network-policies/)
 
 For this question, please set this context (In exam, diff cluster name)
 
