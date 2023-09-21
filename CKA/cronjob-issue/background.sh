@@ -8,8 +8,8 @@ metadata:
 spec:
   containers:
     - name: hello-world-container
-      image: hello-world
-
+      image: busybox
+      command: ["sh", "-c", "while true; do echo 'Hello, World!'; sleep 10; done"]
 ---
 
 apiVersion: v1
