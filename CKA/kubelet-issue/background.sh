@@ -28,3 +28,6 @@ if [ $? -eq 0 ]; then
 else
   echo "1 Not Updated"
 fi
+
+systemctl daemon-reload
+systemctl restart kubelet
