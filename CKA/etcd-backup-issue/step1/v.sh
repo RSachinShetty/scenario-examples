@@ -3,12 +3,13 @@
 # Check the status of kubelet.service
 kubelet_status=$(systemctl is-active kubelet.service)
 
-if [ "$kubelet_status" == "active" ]; then
+if [ "$kubelet_status" = "active" ]; then
   echo "kubelet.service is running."
 else
   echo "kubelet.service is not running."
   exit 1
 fi
+
 
 backup_file="/opt/cluster_backup.db"
 validation_string="Snapshot saved at /opt/cluster_backup.db"
@@ -33,8 +34,10 @@ else
     exit 1
 fi
 
+validation_string_1='"msg":"saved","path":"/opt/cluster_backup.db"'
+
 # Check if the validation string exists in the 'backup.txt' file
-if grep -q '"msg":"saved","path":"/opt/cluster1_backup.db"' "backup.txt"; then
+if grep -q "$validation_string_1" "backup.txt"; then
     echo "Validation passed: 'backup.txt' contains the expected string."
 else
     echo "Validation failed: 'backup.txt' does not contain the expected string."

@@ -7,6 +7,6 @@ For this question, please set this context (In exam, diff cluster name)
 
 <br>
 
-something is working at the moment on controlplane node(Cause NotReady state), check that and `etcd-controlplane` pod is running in `kube-system` environment, take backup and store it in `/opt/cluster_backup.db` file, and also store backup console output store it in `backup.txt`
+something is not working at the moment on controlplane node(Cause NotReady state), check that and `etcd-controlplane` pod is running in `kube-system` environment, take backup and store it in `/opt/cluster_backup.db` file, and also store backup console output store it in `backup.txt`
 
 `ssh controlplane`
