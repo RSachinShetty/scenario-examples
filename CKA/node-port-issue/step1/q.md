@@ -13,6 +13,8 @@ when you run `kubectl get nodes` OR `kubectl get pod -A` threw :-
 * and also `kube-controller-manager-controlplane` pod continuously restarting
 Fix above issue
 
-Expectation: both `kube-controller-manager-controlplane` and `kube-apiserver-controlplane` pods running in `kube-system` namespace 
+Expectation: `kube-apiserver-controlplane` pods running in `kube-system` namespace 
 
 You can `ssh controlplane`
+
+Note: after debugged wait for sometime, pods will come up

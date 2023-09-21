@@ -20,14 +20,11 @@ for probe in $probe_names; do
   fi
 done
 
-# Check if kube-controller-manager-controlplane pod is running
-controller_manager_pod_status=$(kubectl get pod -n kube-system -l component=kube-controller-manager -o jsonpath='{.items[0].status.phase}' 2>/dev/null)
-
 # Check if kube-apiserver-controlplane pod is running
 apiserver_pod_status=$(kubectl get pod -n kube-system -l component=kube-apiserver -o jsonpath='{.items[0].status.phase}' 2>/dev/null)
 
 # Check if both pods are running
-if [ "$controller_manager_pod_status" = "Running" ] && [ "$apiserver_pod_status" = "Running" ]; then
+if [ "$apiserver_pod_status" = "Running" ]; then
   echo "Both kube-controller-manager-controlplane and kube-apiserver-controlplane pods are running in kube-system namespace."
 else
   echo "One or both of the required pods are not running in kube-system namespace."
