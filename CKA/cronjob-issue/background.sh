@@ -4,21 +4,20 @@ kubectl apply -f - <<EOF
 apiVersion: v1
 kind: Pod
 metadata:
-  name: hello-world-pod
+  name: cka-pod
 spec:
   containers:
-    - name: hello-world-container
-      image: busybox
-      command: ["sh", "-c", "while true; do echo 'Hello, World!'; sleep 10; done"]
+    - name: cka-container
+      image: nginx:latest
 ---
 
 apiVersion: v1
 kind: Service
 metadata:
-  name: hello-world-service
+  name: cka-service
 spec:
   selector:
-    app: hello-world-pod
+    app: cka-pod
   ports:
     - protocol: TCP
       port: 80
@@ -30,7 +29,7 @@ spec:
 apiVersion: batch/v1
 kind: CronJob
 metadata:
-  name: hello-world-cronjob
+  name: cka-cronjob
 spec:
   schedule: "* * * * *"
   jobTemplate:
@@ -40,7 +39,7 @@ spec:
           containers:
             - name: curl-container
               image: curlimages/curl:latest
-              command: ["curl", "hello-world-pod"]
+              command: ["curl", "cka-pod"]
           restartPolicy: OnFailure
 
 EOF
