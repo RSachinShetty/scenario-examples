@@ -10,7 +10,6 @@ else
   exit 1
 fi
 
-
 backup_file="/opt/cluster_backup.db"
 validation_string="Snapshot saved at /opt/cluster_backup.db"
 
