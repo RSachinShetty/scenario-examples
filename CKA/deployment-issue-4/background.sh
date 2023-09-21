@@ -6,6 +6,7 @@ kind: PersistentVolume
 metadata:
   name: postgres-pv
 spec:
+  storageClassName: standard
   capacity:
     storage: 100Mi
   accessModes:
@@ -19,6 +20,8 @@ kind: PersistentVolumeClaim
 metadata:
   name: postgres-pvc
 spec:
+  storageClassName: standard
+  volumeName: postgres-pv
   accessModes:
     - ReadWriteMany
   resources:
