@@ -5,10 +5,10 @@ filename="/var/lib/kubelet/config.yaml"
 filename1="/etc/kubernetes/kubelet.conf"
 
 old="/etc/kubernetes/pki/ca.crt"
-new="/etc/kubernetes/pki/CA.CRT"
+new="/etc/kubernetes/pki/CA.CERTIFICATE"
 
 old1="https://172.30.1.2:6443"
-new1="https://172.30.1.2:6433"
+new1="https://172.30.1.2:64433333"
 
 
 # Use sed to replace the old server URL with the new one in the config file
