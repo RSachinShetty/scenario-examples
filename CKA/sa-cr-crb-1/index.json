@@ -3,8 +3,7 @@
     "description": "service account, cluster role, cluster role binding",
     "details": {
       "intro": {
-        "text": "intro.md",
-        "background": "background.sh"
+        "text": "intro.md"
       },
       "steps": [
         {
