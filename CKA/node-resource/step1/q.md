@@ -8,4 +8,4 @@ For this question, please set this context (In exam, diff cluster name)
 <br>
 
 
-Find the Node that consumes the most MEMORY in all cluster(currently we have single cluster). Then, store the result in the file `high_memory_node.txt` with the following format: `cluster_name,node_name`.
+Find the Node that consumes the most MEMORY in all cluster(currently we have single cluster). Then, store the result in the file `high_memory_node.txt` with the following format: `current_context,node_name`.
