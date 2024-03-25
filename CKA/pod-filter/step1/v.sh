@@ -4,7 +4,7 @@
 script_path="pod-filter.sh"
 
 # Define the commands to search for
-commands=("kubectl get pod nginx-pod -o=jsonpath='{.metadata.labels.application}'" "kubectl get pods nginx-pod -o=jsonpath='{.metadata.labels.application}'")
+commands=("kubectl get pod nginx-pod -o=jsonpath='{.metadata.labels.application}'" "kubectl get pods nginx-pod -o=jsonpath='{.metadata.labels.application}'" "kubectl get pod nginx-pod -o jsonpath='{.metadata.labels.application}'" "kubectl get pods nginx-pod -o jsonpath='{.metadata.labels.application}'")
 
 # Flag to indicate if at least one command is found
 found=false

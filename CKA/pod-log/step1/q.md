@@ -14,6 +14,6 @@ Requirements:
 
 * Name the Pod `alpine-pod-pod`.
 * Use `alpine:latest` image
-* Configure the container to execute the `tail -f /config/log.txt` command using `/bin/sh` to continuously monitor and display the contents of a log file.
+* Configure the container to execute the `tail -f /config/log.txt` command(using `args`) with `/bin/sh` to continuously monitor and display the contents of a log file.
 * Set up a volume named `config-volume` that maps to a ConfigMap named `log-configmap`, this `log-configmap` already available.
 * Ensure the Pod has a restart policy of `Never`.

@@ -9,3 +9,6 @@ For this question, please set this context (In exam, diff cluster name)
 
 
 you have a script named `pod-filter.sh`. Update this script to include a command that filters and displays the label with the value `application` of a pod named `nginx-pod` using `jsonpath` only.
+
+It should be in the format
+`kubectl get pod <pod-name> <remainingcmd>`
