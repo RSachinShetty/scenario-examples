@@ -4,7 +4,7 @@
 script_path="svc-filter.sh"
 
 # Define the commands to search for
-commands=("kubectl get svc redis-service -o jsonpath='{.spec.ports[0].targetPort}'" "kubectl get service redis-service -o jsonpath='{.spec.ports[0].targetPort}'" "kubectl get services redis-service -o jsonpath='{.spec.ports[0].targetPort}'")
+commands=("kubectl get svc redis-service -o jsonpath='{.spec.ports[0].targetPort}'" "kubectl get service redis-service -o jsonpath='{.spec.ports[0].targetPort}'" "kubectl get services redis-service -o jsonpath='{.spec.ports[0].targetPort}'" "-o=jsonpath='{.spec.ports[].targetPort}'")
 
 # Flag to indicate if at least one command is found
 found=false
@@ -12,7 +12,7 @@ found=false
 # Read the script file line by line
 while IFS= read -r line; do
   for cmd in "${commands[@]}"; do
-    if [[ $line == *"$cmd"* ]]; then
+    if [[ *"$line"* == *"$cmd"* ]]; then
       found=true
       break
     fi

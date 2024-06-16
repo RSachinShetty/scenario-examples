@@ -22,7 +22,7 @@ CURRENT_IMAGE=$(kubectl get pod "$POD_NAME" -o jsonpath="{.spec.containers[?(@.n
 if [ "$CURRENT_IMAGE" = "$CONTAINER_IMAGE" ]; then
   echo "Container image is set to $CONTAINER_IMAGE."
 else
-  echo "Error: Container image is not set to $CONTAINER_IMAGE."
+  echo "Error: Container image is not set to $CONTAINER_IMAGE"
   exit 1
 fi
 

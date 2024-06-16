@@ -1,5 +1,5 @@
 
-> <strong>Useful Resources</strong>: [Persistent Volumes](https://kubernetes.io/docs/concepts/storage/persistent-volumes/)
+> <strong>Useful Resources</strong>: [Pods](https://kubernetes.io/docs/concepts/workloads/pods/) [Persistent Volumes](https://kubernetes.io/docs/concepts/storage/persistent-volumes/)
 
 For this question, please set this context (In exam, diff cluster name)
 
@@ -12,8 +12,9 @@ Create a Kubernetes Pod configuration to facilitate real-time monitoring of a lo
 
 Requirements:
 
-* Name the Pod `alpine-pod-pod`.
+* Name the Pod `alpine-pod-pod`
 * Use `alpine:latest` image
-* Configure the container to execute the `tail -f /config/log.txt` command(using `args`) with `/bin/sh` to continuously monitor and display the contents of a log file.
+* Container name `alpine-container`
+* Configure the container to execute the `tail -f /config/log.txt` command(using `args`) with `/bin/sh`(using `command`) to continuously monitor and display the contents of a log file.
 * Set up a volume named `config-volume` that maps to a ConfigMap named `log-configmap`, this `log-configmap` already available.
 * Ensure the Pod has a restart policy of `Never`.
