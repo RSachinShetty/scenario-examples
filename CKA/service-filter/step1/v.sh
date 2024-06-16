@@ -4,7 +4,7 @@
 script_path="svc-filter.sh"
 
 # Define the commands to search for
-commands=("kubectl get svc redis-service -o jsonpath='{.spec.ports[0].targetPort}'" "kubectl get service redis-service -o jsonpath='{.spec.ports[0].targetPort}'" "kubectl get services redis-service -o jsonpath='{.spec.ports[0].targetPort}'" "-o=jsonpath='{.spec.ports[].targetPort}'")
+commands=("kubectl get svc redis-service -o jsonpath='{.spec.ports[0].targetPort}'" "kubectl get svc redis-service -o=jsonpath='{.spec.ports[0].targetPort}'" "kubectl get service redis-service -o jsonpath='{.spec.ports[0].targetPort}'" "kubectl get service redis-service -o=jsonpath='{.spec.ports[0].targetPort}'" "kubectl get services redis-service -o jsonpath='{.spec.ports[0].targetPort}'")
 
 # Flag to indicate if at least one command is found
 found=false

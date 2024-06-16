@@ -9,3 +9,8 @@ For this question, please set this context (In exam, diff cluster name)
 
 
 you have a script named `svc-filter.sh`. Update this script to include a command that filters and displays the value of `target port`of a service named `redis-service` using `jsonpath` only.
+
+It should be in the format kubectl get svc <service-name> <remainingcmd>
+OR
+It should be in the format kubectl get service <service-name> <remainingcmd>
+
