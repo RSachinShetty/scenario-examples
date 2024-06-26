@@ -23,7 +23,7 @@ actual_image=$(kubectl get pod "$pod_name" -n default -o jsonpath='{.spec.contai
 actual_command=$(kubectl get pod "$pod_name" -n default -o jsonpath='{.spec.containers[0].command}')
 
 # Extract the command from the JSON object
-actual_command=$(echo "$actual_command" | jq -r '.[2]')
+actual_command=$(echo "$actual_command" | jq -r '.[0]')
 
 # Check if the actual image and command match the expected values
 if [ "$actual_image" = "$expected_image" ] && [ -n "$(echo "$actual_command" | grep "$expected_command")" ]; then
