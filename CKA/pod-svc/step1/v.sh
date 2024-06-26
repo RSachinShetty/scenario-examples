@@ -1,5 +1,19 @@
 #!/bin/bash
 
+SERVICE_NAME="app-svc"
+NAMESPACE="default" # Change this to the appropriate namespace if needed
+
+# Get the selector of the service
+SELECTOR=$(kubectl get svc $SERVICE_NAME -n $NAMESPACE -o jsonpath='{.spec.selector.app}')
+
+# Check if the selector is "app-lab"
+if [ "$SELECTOR" = "app-lab" ]; then
+  echo "The service $SERVICE_NAME has the correct selector: app=app-lab"
+else
+  echo "The service $SERVICE_NAME does not have the correct selector. Current selector: app=$SELECTOR"
+  exit 1
+fi
+
 # Forward port 8080 from app-pod to localhost
 kubectl port-forward pod/app-pod 8080:80 &
 
