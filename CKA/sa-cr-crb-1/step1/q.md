@@ -8,4 +8,4 @@ For this question, please set this context (In exam, diff cluster name)
 <br>
 
 
-Create a service account named `app-account`, a cluster role named `app-role-cka`, and a cluster role binding named `app-role-binding-cka`. Update the permissions of this service account so that it can `get` the `pods` only in the default namespace.
+Create a service account named `app-account`, a role named `app-role-cka`, and a role binding named `app-role-binding-cka`. Update the permissions of this service account so that it can `get` the `pods` only in the default namespace.
