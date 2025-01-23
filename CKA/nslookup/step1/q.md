@@ -7,5 +7,5 @@ For this question, please set this context (In exam, diff cluster name)
 
 <br>
 
-Create an nginx pod named `nginx-pod-cka` using the `nginx` image, and expose it internally with a service named `nginx-service-cka`. Verify your ability to perform DNS lookups for the service name from within the cluster using the `busybox:1.28` image. Record the results in `nginx-service.txt`.
+Create an nginx pod named `nginx-pod-cka` using the `nginx` image, and expose it internally with a service named `nginx-service-cka`. Verify your ability to perform DNS lookups(use name: `test-nslookup`) for the service name from within the cluster using the `busybox:1.28` image. Record the results in `nginx-service.txt`.
 
